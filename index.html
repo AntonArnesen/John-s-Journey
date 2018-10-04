@@ -6,21 +6,19 @@
 </head>
 <body>
 
-<h1>Amazing login function</h1>
+<h1>Welcome to John's Journey</h1>
 
-Username
 <input type="text" name="username" id="username"/>
-<br>
-Password
 <input type="password" name="password" id="password" />
+
+<input type="button" value="Login" name="submit" id="submit" onclick="getInfo()"/>
+<br> 
 <br>
-<input type="button" value="Login" name="submit" id="submit" />
-<input type="button" value="Can't remember your password?" name="forgotPassword" id="forgotPassword" />
+<input type="button" value="Forgot Password" id="forgotPassword" onclick="forgotPassword()"/>
+
+
 <span id="loginResult"></span>
-<br>
-<input type="button" value="Oh shit, not registered? Click here" name="register" id="register" />
 
-
-<script src="./ourJavascript.js"></script>
+<script src="function/ourJavascript.js"></script>
 </body>
 </html>

@@ -15,6 +15,13 @@ var objUser = [
   }
 ]
 
+// Greeting message
+if (document.getElementById ('userLogin')){
+  var username = getParameterByName('username');
+document.getElementById ('userLogin').innerText=username;
+
+
+}
 // Define the buttons
 var submit = document.getElementById('submit');
 var forget = document.getElementById('forgotPassword');
@@ -61,6 +68,15 @@ function logOut () {
   window.location = "index.html";
 }
 
-
+// Putting username into URL
+function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
 
 
