@@ -7,21 +7,20 @@
 var objUser = [
   {
     username: "Joe",
-    password: "1234"
+    password: "1234",
+    userId: 1
   },
   {
     username: "Anna",
-    password: "5678"
+    password: "5678",
+    userId: 2
   }
 ]
 
-// Greeting message
-if (document.getElementById ('userLogin')){
-  var username = getParameterByName('username');
-document.getElementById ('userLogin').innerText=username;
+var aunthenticatedUserId = null
 
 
-}
+
 // Define the buttons
 var submit = document.getElementById('submit');
 var forget = document.getElementById('forgotPassword');
@@ -39,8 +38,21 @@ function getInfo() {
   for (i = 0; i < objUser.length; i++) {
       if (username == objUser[i].username && password == objUser[i].password) 
         {console.log (username + " is logged in!");
-          window.location = "logIn.html";
-            return; 
+
+//Set authenticatedUserId to userId
+      aunthenticatedUserId = objUser[i].userId;
+      console.log (aunthenticatedUserId)
+// Greeting message
+
+// var username = getParameterByName('username');
+      document.getElementById ('userLogin').innerText=objUser[i].username;
+
+// Hide div id="loginPage" and show div id="welcomePage"
+        var loginPage = document.getElementById("loginPage");
+        var welcomePage = document.getElementById("welcomePage");
+        console.log(loginPage);
+        loginPage.style.display = "none";
+        welcomePage.style.display = "block";
   }
 // If Username or Password is not right than it counts down possibel attempts
   else{
@@ -66,17 +78,6 @@ function forgotPassword () {
 
 function logOut () {
   window.location = "index.html";
-}
-
-// Putting username into URL
-function getParameterByName(name, url) {
-  if (!url) url = window.location.href;
-  name = name.replace(/[\[\]]/g, '\\$&');
-  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-      results = regex.exec(url);
-  if (!results) return null;
-  if (!results[2]) return '';
-  return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
 
