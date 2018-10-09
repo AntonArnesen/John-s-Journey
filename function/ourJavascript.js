@@ -2,8 +2,29 @@
 
 // ADD IDENTATION!!!!!
 
-// User Data
+// We create a user class, so we have an easy way to create users and further implement features at a later stage
+class User {
 
+  // The constructor for our class, which will allow us to create new objects of our class
+  constructor(username, password, firstname, surname, country, email, gender ) {
+    this.username = username;
+    this.password = password;
+    this.firstname = firstname;
+    this.surname = surname;
+    this.country = country; 
+    this.email = email; 
+    this.gender = gender;
+    // Create function that assigns random userID, then it becomes a method. Create method instead. math.random 0 - 1 multiply it by a million 
+    // or detect number of users and add 1. 
+    this.userId = userId;
+
+  
+  }
+// Fill it up with a few users
+users.push(new User("CoolJoe", "1234", "Joe", "Reisinger", "Germany", "joe@email.de", 1));
+users.push(new User("CoolAnna", "5678", "Anton", "Brandt", "Denmark", "anton@brandt.dk", 2));
+
+// User Data
 var objUser = [
   {
     username: "Joe",
@@ -18,8 +39,6 @@ var objUser = [
 ]
 
 var aunthenticatedUserId = null
-
-
 
 // Define the buttons
 var submit = document.getElementById('submit');
@@ -42,7 +61,6 @@ function getInfo() {
 //Set authenticatedUserId to userId
       aunthenticatedUserId = objUser[i].userId;
       console.log (aunthenticatedUserId)
-// Greeting message
 
 // var username = getParameterByName('username');
       document.getElementById ('userLogin').innerText=objUser[i].username;

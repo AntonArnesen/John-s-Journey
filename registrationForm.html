@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign up</title>
-    <link rel='stylesheet' href='registrationForm.css' type='text/css' />
+    <link rel='stylesheet' href='./style/registrationForm.css' type='text/css' />
 <script src="sample-registration-form-validation.js"></script>
 </head>
 <body onload="document.registration.userid.focus();">
@@ -21,13 +21,13 @@
     <li><input type="text" name="firstName" size="50" /></li>
     <li><label for="surName">Surname:</label></li>
     <li><input type="text" name="surName" size="50" /></li>
-    <li><label for="address">Address:</label></li>
-    <li><input type="text" name="address" size="50" /></li>
-    <li><label for="zip">Postal Code:</label></li>
-    <li><input type="text" name="zip" /></li>
     <li><label for="country">Country:</label></li>
     <li><select name="country">
-    <option selected="" value="Default">(Please select a country)</option>
+
+        <option selected="" value="Default">(Please select a country)</option>
+
+    <!-- ADD MORE COUNTRIES; https://www.freeformatter.com/iso-country-list-html-select.html -->
+
     <option value="AF">Australia</option>
     <option value="AL">Canada</option>
     <option value="DZ">India</option>
@@ -43,16 +43,6 @@
     <li><input type="checkbox" name="msex" value="Male" /><span>Male</span></li>
     <li><input type="checkbox" name="fsex" value="Female" /><span>Female</span></li>
     <li><input type="checkbox" name="nosex" value="No gender" /><span>Prefer not to disclose</span></li>
-    <li><label for="language">Language:</label></li>
-    <li><select name="language">
-    <option selected="" value="Default">(Please select your language)</option>
-    <option value="ENG">English</option>
-    <option value="GER">German</option>
-    <option value="ITA">Italian</option>
-    <option value="AS">Russian</option>
-    <option value="SWE">Swedish</option>
-    <option value="DEN">Danish</option>
-    <option value="NOR">Norwegian</option>
     </select></li>
     <li><input type="submit" name="register" value="Register" /></li>
     </ul>
