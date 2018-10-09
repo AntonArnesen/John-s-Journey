@@ -4,7 +4,7 @@
 class User {
 
   // The constructor for our class, which will allow us to create new objects of our class
-constructor(username, password, firstname, surname, country, email, gender, userId ) {
+  constructor(username, password, firstname, surname, country, email, gender, userId) {
     this.username = username;
     this.password = password;
     this.firstname = firstname;
@@ -12,17 +12,15 @@ constructor(username, password, firstname, surname, country, email, gender, user
     this.country = country; 
     this.email = email; 
     this.gender = gender;
+    this.userId = function () {
+        Math.random().toString(36).substr(2, 9);
+    }
     // Create function that assigns random userID, then it becomes a method. Create method instead. math.random 0 - 1 multiply it by a million 
     // or detect number of users and add 1. 
-    this.userId = userId
-    Math.random()
-    number.toString(36);
-    var id = number.toString(36).substr(2, 9);
-
-  
+    }
   }
-}
-// Create array called users
+  
+  // Create array called users
 var users = [];
 
 // push new instance of Users into newly created array
