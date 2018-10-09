@@ -1,12 +1,10 @@
-
-
 // ADD IDENTATION!!!!!
 
 // We create a user class, so we have an easy way to create users and further implement features at a later stage
 class User {
 
   // The constructor for our class, which will allow us to create new objects of our class
-  constructor(username, password, firstname, surname, country, email, gender ) {
+constructor(username, password, firstname, surname, country, email, gender, userId ) {
     this.username = username;
     this.password = password;
     this.firstname = firstname;
@@ -16,28 +14,22 @@ class User {
     this.gender = gender;
     // Create function that assigns random userID, then it becomes a method. Create method instead. math.random 0 - 1 multiply it by a million 
     // or detect number of users and add 1. 
-    this.userId = userId;
+    this.userId = userId
+    Math.random()
+    number.toString(36);
+    var id = number.toString(36).substr(2, 9);
 
   
   }
-// Fill it up with a few users
+}
+// Create array called users
+var users = [];
+
+// push new instance of Users into newly created array
 users.push(new User("CoolJoe", "1234", "Joe", "Reisinger", "Germany", "joe@email.de", 1));
 users.push(new User("CoolAnna", "5678", "Anton", "Brandt", "Denmark", "anton@brandt.dk", 2));
 
-// User Data
-var objUser = [
-  {
-    username: "Joe",
-    password: "1234",
-    userId: 1
-  },
-  {
-    username: "Anna",
-    password: "5678",
-    userId: 2
-  }
-]
-
+// In order to authenticate logged in user we create a variable and assign null
 var aunthenticatedUserId = null
 
 // Define the buttons
@@ -54,16 +46,16 @@ function getInfo() {
   var password = document.getElementById("password").value
 
 // Loop that goes through the User Data to idetify right or wrong Username/Password
-  for (i = 0; i < objUser.length; i++) {
-      if (username == objUser[i].username && password == objUser[i].password) 
+  for (i = 0; i < users.length; i++) {
+      if (username == users[i].username && password == users[i].password) 
         {console.log (username + " is logged in!");
 
 //Set authenticatedUserId to userId
-      aunthenticatedUserId = objUser[i].userId;
+      aunthenticatedUserId = users[i].userId;
       console.log (aunthenticatedUserId)
 
 // var username = getParameterByName('username');
-      document.getElementById ('userLogin').innerText=objUser[i].username;
+      document.getElementById ('userLogin').innerText=users[i].username;
 
 // Hide div id="loginPage" and show div id="welcomePage"
         var loginPage = document.getElementById("loginPage");
