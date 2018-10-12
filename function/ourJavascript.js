@@ -12,9 +12,11 @@ class User {
     this.country = country; 
     this.email = email; 
     this.gender = gender;
-    this.userId = function () {
-        Math.random().toString(36).substr(2, 9);
-    }
+    this.userId = userId
+    
+    //function () {
+     //   Math.random().toString(36).substr(2, 9);
+    //}
     // Create function that assigns random userID, then it becomes a method. Create method instead. math.random 0 - 1 multiply it by a million 
     // or detect number of users and add 1. 
     }
@@ -34,6 +36,7 @@ var aunthenticatedUserId = null
 var submit = document.getElementById('submit');
 var forget = document.getElementById('forgotPassword');
 var logout = document.getElementById("logout");
+var register = document.getElementById ('registerUser');
 
 // Variabel to define the amount of wrong attempts you have
 var attempt = 3;
@@ -79,6 +82,22 @@ function getInfo() {
   break;
   }
 }
+
+function goToRegister () {
+  var loginPage = document.getElementById("loginPage");
+  var signupForm = document.getElementById("signupForm");
+  console.log(loginPage);
+  loginPage.style.display = "none";
+  signupForm.style.display = "block";
+}
+
+function registerUser () {
+  users.push(new User(username,password))
+  var username = document.getElementsByName("username").value;
+  var password = document.getElementsByName("passid").value;
+
+}
+
 // Function to be executed if you press forgotPassword
 function forgotPassword () {
   alert ("Stupid Idiot");
