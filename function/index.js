@@ -28,6 +28,8 @@ var users = [];
 users.push(new User("CoolJoe", "1234", "Joe", "Reisinger", "Germany", "joe@email.de", 1));
 users.push(new User("CoolAnna", "1234", "Joe", "Reisinger", "Germany", "joe@email.de", 2));
 
+localStorage.setItem("loggedInUser", loggedInUser);
+
 // In order to authenticate logged in user we create a variable and assign null
 var aunthenticatedUserId = null
 
@@ -42,7 +44,6 @@ var resultSpan = document.getElementById('loginResult');
 // Variabel to define the amount of wrong attempts you have
 var attempt = 3;
 // Gregor´s try to use local storage 
-localStorage.setItem("attempt", attempt);
 
 // Function to go through the User Data to match Username/Password
 function getInfo() {
@@ -50,11 +51,11 @@ function getInfo() {
   var password = document.getElementById("password").value
 
 // Loop that goes through the User Data to idetify right or wrong Username/Password
-  for (i = 0; i < users.length; i++) {
+  for (let i = 0; i < users.length; i++) {
       if (username == users[i].username && password == users[i].password) {
         {console.log (username + " is logged in!");
+        localStorage.setItem("loggedInUser", users[i].firstname);
         window.location = "journeyOverview.html";
-
 //Set authenticatedUserId to userId
         aunthenticatedUserId = users[i].userId;
         console.log (aunthenticatedUserId)
