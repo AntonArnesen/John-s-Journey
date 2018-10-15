@@ -13,7 +13,11 @@ class User {
     this.email = email; 
     this.gender = gender;
     this.userId = null; 
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 867bb48e494f038bde45b44512c4ad76fe115722
     //function () {
      //   Math.random().toString(36).substr(2, 9);
     //}
@@ -41,6 +45,8 @@ var resultSpan = document.getElementById('loginResult');
 
 // Variabel to define the amount of wrong attempts you have
 var attempt = 3;
+// Gregor´s try to use local storage 
+localStorage.setItem("attempt", attempt);
 
 // Function to go through the User Data to match Username/Password
 function getInfo() {
