@@ -12,7 +12,7 @@ class User {
     this.country = country; 
     this.email = email; 
     this.gender = gender;
-    this.userId = userId; 
+    this.userId = null; 
     
     //function () {
      //   Math.random().toString(36).substr(2, 9);
@@ -26,16 +26,18 @@ var users = [];
 
 // push new instance of Users into newly created array
 users.push(new User("CoolJoe", "1234", "Joe", "Reisinger", "Germany", "joe@email.de", 1));
-users.push(new User("CoolAnna", "5678", "Anton", "Brandt", "Denmark", "anton@brandt.dk", 2));
+users.push(new User("CoolAnna", "1234", "Joe", "Reisinger", "Germany", "joe@email.de", 2));
 
 // In order to authenticate logged in user we create a variable and assign null
 var aunthenticatedUserId = null
 
-// Define the buttons
+// Define the buttons and span
 var submit = document.getElementById('submit');
 var forget = document.getElementById('forgotPassword');
 var logout = document.getElementById("logout");
 var register = document.getElementById ('registerUser');
+var resultSpan = document.getElementById('loginResult');
+
 
 // Variabel to define the amount of wrong attempts you have
 var attempt = 3;
@@ -47,55 +49,39 @@ function getInfo() {
 
 // Loop that goes through the User Data to idetify right or wrong Username/Password
   for (i = 0; i < users.length; i++) {
-      if (username == users[i].username && password == users[i].password) 
+      if (username == users[i].username && password == users[i].password) {
         {console.log (username + " is logged in!");
+        window.location = "journeyOverview.html";
 
 //Set authenticatedUserId to userId
-      aunthenticatedUserId = users[i].userId;
-      console.log (aunthenticatedUserId)
+        aunthenticatedUserId = users[i].userId;
+        console.log (aunthenticatedUserId)
+        }
 
-// var username = getParameterByName('username');
-      document.getElementById ('userLogin').innerText=users[i].username;
-
-// Hide div id="loginPage" and show div id="welcomePage"
-        var loginPage = document.getElementById("loginPage");
-        var welcomePage = document.getElementById("welcomePage");
-        console.log(loginPage);
-        loginPage.style.display = "none";
-        welcomePage.style.display = "block";
-  }
 // If Username or Password is not right than it counts down possibel attempts
-  else{
-    attempt --;// Decrementing by one.
-      alert("Wrong Password or Username!" + " You have left "+attempt+" attempt");
-      
+  } 
+}
 // Disabling fields after 3 attempts.
-  if( attempt == 0){
-      document.getElementById("username").disabled = true;
-      document.getElementById("password").disabled = true;
-      document.getElementById("submit").disabled = true;
-  return;
-  }
-}
-// To stop loop to count down possible attempts without a new chance to change your Username/Password
-  break;
-  }
-}
+if( attempt == 0){    
+    document.getElementById("username").disabled = true;
+    document.getElementById("password").disabled = true;
+    document.getElementById("submit").disabled = true;
 
+//Return false to get out of function
+return false;
+} else {
+
+//Drecrement amount of attemps and show in span "loginResult"
+  attempt--;
+
+  resultSpan.innerText = "You've entered a wrong username or password. You have left "+attempt+" attempt(s).";
+  }    
+}
 function goToRegister () {
-  var loginPage = document.getElementById("loginPage");
-  var signupForm = document.getElementById("signupForm");
-  console.log(loginPage);
-  loginPage.style.display = "none";
-  signupForm.style.display = "block";
-}
+    window.location = "registrationForm.html";
+  }
 
-function registerUser () {
-  users.push(new User(username,password))
-  var username = document.getElementsByName("username").value;
-  var password = document.getElementsByName("passid").value;
+function forgotPassword () {
 
-}
-
-
-
+    window.location = "resetPassword.html";
+  }
