@@ -6,24 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign up</title>
    <link rel='stylesheet' href='./style/registrationForm.css' type='text/css' />
-<!-- <script src="sample-registration-form-validation.js"></script> -->
 </head>
-<body onload="document.registration.userid.focus();">
     <h1>Sign up</h1>
-        <form name='registration' onSubmit="return formValidation();">
      <ul>
         <li><label for="username">Username:</label></li>
         <li><input type="text" name="username" id="regUsername" size="12" /></li>
         <li><label for="passid">Password:</label></li>
-        <li><input type="password" name="passid" size="12" /></li>
+        <li><input type="password" name="passid" id="regPassword" size="12" /></li>
         <li><label for="firstName">First name:</label></li>
-        <li><input type="text" name="firstName" size="50" /></li>
+        <li><input type="text" name="firstName" id="regFirstname"size="50" /></li>
         <li><label for="surName">Surname:</label></li>
-        <li><input type="text" name="surName" size="50" /></li>
+        <li><input type="text" name="surName" id="regSurname"size="50" /></li>
         <li><label for="country">Country:</label></li>
-        <li><select name="country">
+        <li><select name="country" id="regCountry">
     
-            <option selected="" value="Default">(Please select a country)</option>
+        <option selected="" value="Default">(Please select a country)</option>
     
         <!-- ADD MORE COUNTRIES; https://www.freeformatter.com/iso-country-list-html-select.html -->
     
@@ -35,20 +32,17 @@
         <option value="SE">Sweden</option>
         <option value="DK">Denmark</option>
         <option value="NO">Norway</option>
-        </select></li>
+        </select id="regCountry"></li>
         <li><label for="email">Email:</label></li>
-        <li><input type="text" name="email" size="50" /></li>
-        <li><label id="gender">Gender:</label></li>
+        <li><input type="text" name="email" id="regEmail" size="50" /></li>
+        <li><label id="regGender">Gender:</label></li>
         <li><input type="checkbox" name="msex" value="Male" /><span>Male</span></li>
         <li><input type="checkbox" name="fsex" value="Female" /><span>Female</span></li>
         <li><input type="checkbox" name="nosex" value="No gender" /><span>Prefer not to disclose</span></li>
-        </select></li>
-        <input type="submit" value="Register"  id="registerUser" onclick="registerUser()"/>
-
-        <!-- <body onload="document.registration.userid.focus();"> -->
-        <!-- <li> <input type="submit" value="Register" id="registerUser" onclick="registerUser()"/></li>
-       -->
+        </select id=regGender></li>
+        <input type="submit" value="Register"  id="registerUser"/>
     </ul>
-</form>
+
+<script src="./function/index.js"></script>
 </body>
 </html>

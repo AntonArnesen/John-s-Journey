@@ -2,10 +2,10 @@ function logOut () {
     window.location = "index.html";
   }
 
+  // Defining h1 as headerId 
   var header = document.getElementById("headerId");
-  
 
+  //Get username from loggedInUser out of the index.js file (in the logIn Loop)
   username = localStorage.getItem("loggedInUser")
-  // Remember to integrate greeting message 'Welcome, <span></span>'
 
   header.textContent = `Thank you ${username} for coming back`
