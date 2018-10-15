@@ -13,7 +13,11 @@ class User {
     this.email = email; 
     this.gender = gender;
     this.userId = null; 
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> 867bb48e494f038bde45b44512c4ad76fe115722
     //function () {
      //   Math.random().toString(36).substr(2, 9);
     //}
