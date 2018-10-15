@@ -12,7 +12,7 @@ class User {
     this.country = country; 
     this.email = email; 
     this.gender = gender;
-    this.userId = userId
+    this.userId = userId; 
     
     //function () {
      //   Math.random().toString(36).substr(2, 9);
@@ -20,8 +20,7 @@ class User {
     // Create function that assigns random userID, then it becomes a method. Create method instead. math.random 0 - 1 multiply it by a million 
     // or detect number of users and add 1. 
     }
-  }
-  
+  } 
   // Create array called users
 var users = [];
 
@@ -98,13 +97,5 @@ function registerUser () {
 
 }
 
-// Function to be executed if you press forgotPassword
-function forgotPassword () {
-  alert ("Stupid Idiot");
-}
-
-function logOut () {
-  window.location = "index.html";
-}
 
 
