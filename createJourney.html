@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Create Journey</title>
-    <link rel="stylesheet" href="./style/createJourney.css">
+    <link rel="stylesheet" href="./style/createJourney.css" type="text/css">
     
 
  <body>
@@ -19,18 +19,33 @@
             </div>
             <div class="modal-body">
               <p>Just follow the instructions below</p>
+              <label for="eventName">Event Name</label>
+              <input type="eventName" name="eventName" id="regName" size="45" placeholder="Add a short, clear name" />
+              <form action="/action_page.php">
+              <label for="trvlRegion">Select Region</label>
+              <input list="trvlRegion" name="trvlRegion" id="regRegion" size="45" placeholder="Select Region">
+              <datalist id="trvlRegion">
+                <option value="Europe">
+              </datalist>
+              <br>
+              <label for="dpDate">Departure Date</label>
+                <input type="date" name="dpDate">
+                <br>
+                <label for="rtDate">Return Date</label>
+                <input type="date" name="rtDate">
+                <br>
+                <label for="message">Description</label>
+                <textarea name="message" rows="10" cols="30">Tell people more about the Journey</textarea>
+                <br>
+                <input type="submit" value="Create your Journey" id="createJourney"/>
+              </form>
               
             </div>
           </div>
         </div>
     <script src="./function/createJourney.js"></script> 
    
-    <form action="/action_page.php">
-      Depature date <input type="date" name="dpDate">
-      <br>
-      Return date <input type="date" name="rtDate">
-      <br>
-    </form>
+  
         
 </body>
 </html>

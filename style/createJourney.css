@@ -30,7 +30,7 @@ body{
   .modal-content{
     background-color:#f4f4f4;
     margin: 20% auto;
-    width:70%;
+    width:50%;
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
     animation-name:modalopen;
     animation-duration:1s;
@@ -48,13 +48,8 @@ body{
   
   .modal-body{
     padding:10px 20px;
-  }
-  
-  .modal-footer{
-    background:dodgerblue;
-    padding:10px;
-    color:#fff;
-    text-align: center;
+    max-height: 100%;
+    overflow: auto;
   }
   
   .closeBtn{
@@ -74,3 +69,28 @@ body{
     from{ opacity: 0}
     to {opacity: 1}
   }
+
+  textarea{ 
+    vertical-align: top;
+  }
+
+  [type="submit"] {
+    clear: left;
+    margin: 20px 0 0 230px;
+    font-size:18px
+    }
+
+    label{
+      float: left;
+      clear: left;
+      width: 100px;
+      text-align: right;
+      margin-right: 10px;
+      font-family:Verdana, Arial, Helvetica, sans-serif;
+      font-size:12px;
+      }
+
+      input, select, datalist {
+        float: left;
+        margin-bottom: 10px;
+        }
