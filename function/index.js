@@ -4,39 +4,26 @@
 class User {
 
   // The constructor for our class, which will allow us to create new objects of our class
-  constructor(username, password, firstname, surname, country, email, gender, userId) {
+  constructor(username, password, firstname, surname, country, email, gender) {
     this.username = username;
     this.password = password;
     this.firstname = firstname;
     this.surname = surname;
     this.country = country; 
     this.email = email; 
-    this.gender = gender;
-    this.userId = null; 
-    
-
-    //function () {
-     //   Math.random().toString(36).substr(2, 9);
-    //}
-    // Create function that assigns random userID, then it becomes a method. Create method instead. math.random 0 - 1 multiply it by a million 
-    // or detect number of users and add 1. 
+    this.gender = gender; 
     }
   } 
-
 // Create array called users
 var users = JSON.parse(localStorage.getItem("users"));
 
+
+// Hardcoded users in the users array
 if(users === null){
   users = [];
   users.push(new User("CoolJoe", "1234", "Joe", "Reisinger", "Germany", "joe@email.de", 1));
   users.push(new User("CoolAnna", "1234", "Anna", "Reisinger", "Germany", "joe@email.de", 2));
 }
-
-// Create Function that pushes new user data in existing array 
-
-// push new instance of Users into newly created array
-
-
 
 // In order to authenticate logged in user we create a variable and assign null
 var aunthenticatedUserId = null
@@ -51,7 +38,6 @@ var resultSpan = document.getElementById('loginResult');
 
 // Variabel to define the amount of wrong attempts you have
 var attempt = 3;
-// Gregor´s try to use local storage 
 
 // Function to go through the User Data to match Username/Password
 function getInfo() {
@@ -76,8 +62,6 @@ function getInfo() {
         }
 
 // If Username or Password is not right than it counts down possibel attempts
-  } 
-}
 // Disabling fields after 3 attempts.
 if( attempt == 0){    
     document.getElementById("username").disabled = true;
@@ -90,31 +74,21 @@ return false;
 
 //Drecrement amount of attemps and show in span "loginResult"
   attempt--;
-  
   resultSpan.innerText = "You've entered a wrong username or password. You have left "+attempt+" attempt(s).";
   }    
 }
+
+// Redirect to registrationForm page 
 function goToRegister () {
     window.location = "registrationForm.html";
   }
 
+// Redirect to resetPassword page
 function forgotPassword () {
-
     window.location = "resetPassword.html";
   }
 
-// Pushing new user into array Users and storing it using localStorage
-
-
-
-
-
-// var testObject = {regUsername: 'John', 'two':2, 'three': 3 };
-
-// Retrieve the object from storage
-
-//document.getElementById("btnSignUp").addEventListener("click", 
-
+// Defining varibales - as we get them from our sign up form 
 document.getElementById("registerUser").addEventListener("click", function() {
     username = document.getElementById("regUsername").value;
     password = document.getElementById("regPassword").value;
@@ -124,33 +98,9 @@ document.getElementById("registerUser").addEventListener("click", function() {
     email = document.getElementById("regEmail").value;
     gender = document.getElementById("regGender").value; 
   
+// Push new Users in the array users and store them in local storage 
     users.push(new User(username, password, firstname, surname, country, email, gender));
     console.log(users);
     localStorage.setItem('users',JSON.stringify(users));
     window.location = "index.html";
       });
-
-// Here
-/*
-users = JSON.parse(localStorage.getItem("users"));
-
-if(users == null){
-    users = [{
-        userName : "dajo14ac@student.cbs.dk",
-        passWord : "1234",
-    }];
-}
-
-document.getElementById("btnSignUp").addEventListener("click", function () {
-    var registerUser = document.getElementById("txtEmailRegister").value;
-    var registerPassword = document.getElementById("txtPasswordRegister").value;
-    var newUser = {
-        username: registerUser,
-        password: registerPassword,
-    };
-    users.push(newUser);
-    console.log(users);
-    localStorage.setItem('users',JSON.stringify(users));
-});
-
-*/

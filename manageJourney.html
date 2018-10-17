@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create Journey</title>
+    <link rel="stylesheet" href="./style/createJourney.css" type="text/css">
+    
+
+ <body>
+        <button id="modalBtn" class="button">Click Here To Manage Your Journey</button>
+
+        <div id="simpleModal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+                <span class="closeBtn">&times;</span>
+                <h2>Set your Budget & Availability</h2>
+            </div>
+            <div class="modal-body">
+              <p>How cheap are you?</p>
+              <label for="journeyBudget">Your Budget in € </label>
+              <input type="journeyBudget" name="journeyBudget" id="userJourneyBudget" size="45" placeholder="Tell the group, how many pennies you have left" />
+              <!--action redirects to the next page, which is the same at this point-->
+              <form action="./manageJourney.html">
+              <br>
+              <p>When are you free?</p>
+              <label for="dpDate">Departure Date</label>
+                <input type="date" name="dpDate" id="dpDate">
+                <br>
+                <label for="rtDate">Return Date</label>
+                <input type="date" name="rtDate" id="rtDate">
+                <br>
+                <br>
+                <input type="submit" value="Get started" id="userJourneySettings"/>
+              </form>
+              
+            </div>
+          </div>
+        </div>
+    <script src="./function/userSetting.js"></script> 
+   
+  
+        
+</body>
+</html>
