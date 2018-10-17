@@ -12,10 +12,11 @@ class User {
     this.email = email; 
     }
   } 
-
 // Create array called users
 var users = JSON.parse(localStorage.getItem("users"));
 
+
+// Hardcoded users in the users array
 if(users === null){
   users = [];
   users.push(new User("CoolJoe", "1234", "Joe", "Reisinger", "joe@email.de"));
@@ -117,7 +118,6 @@ function checkPassword(password) {
 
 // function for valditating firstname input 
 function checkFirstname(firstname) {
-
   // at least one number, one lowercase and one uppercase letter
   // at least six characters
     if (/^[a-z\s]+$/.test(firstname))
@@ -142,9 +142,6 @@ function checkSurname(surname) {
     alert("Your surname cannot contain !#€%& or other signs")
     return (false)
   }
-
-
-
 
 //If all input has been authenticated, welcome and  redirect user to loginPage
 function userCreated () {
