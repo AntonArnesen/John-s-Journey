@@ -4,22 +4,12 @@
 class User {
 
   // The constructor for our class, which will allow us to create new objects of our class
-  constructor(username, password, firstname, surname, country, email, gender, userId) {
+  constructor(username, password, firstname, surname, email) {
     this.username = username;
     this.password = password;
     this.firstname = firstname;
     this.surname = surname;
-    this.country = country; 
     this.email = email; 
-    this.gender = gender;
-    this.userId = null; 
-    
-
-    //function () {
-     //   Math.random().toString(36).substr(2, 9);
-    //}
-    // Create function that assigns random userID, then it becomes a method. Create method instead. math.random 0 - 1 multiply it by a million 
-    // or detect number of users and add 1. 
     }
   } 
 
@@ -28,18 +18,9 @@ var users = JSON.parse(localStorage.getItem("users"));
 
 if(users === null){
   users = [];
-  users.push(new User("CoolJoe", "1234", "Joe", "Reisinger", "Germany", "joe@email.de", 1));
-  users.push(new User("CoolAnna", "1234", "Anna", "Reisinger", "Germany", "joe@email.de", 2));
+  users.push(new User("CoolJoe", "1234", "Joe", "Reisinger", "joe@email.de"));
+  users.push(new User("CoolAnna", "1234", "Anna", "Reisinger", "joe@email.de"));
 }
-
-// Create Function that pushes new user data in existing array 
-
-// push new instance of Users into newly created array
-
-
-
-// In order to authenticate logged in user we create a variable and assign null
-var aunthenticatedUserId = null
 
 // Define the buttons and span
 var submit = document.getElementById('submit');
@@ -48,17 +29,14 @@ var logout = document.getElementById("logout");
 var register = document.getElementById ('registerUser');
 var resultSpan = document.getElementById('loginResult');
 
-
 // Variabel to define the amount of wrong attempts you have
 var attempt = 3;
-// Gregor´s try to use local storage 
 
 // Function to go through the User Data to match Username/Password
 function getInfo() {
   var username = document.getElementById("username").value
   var password = document.getElementById("password").value
 
- 
 // Loop that goes through the User Data to idetify right or wrong Username/Password
   for (let i = 0; i < users.length; i++) {
       if (username == users[i].username && password == users[i].password) {
@@ -74,8 +52,6 @@ function getInfo() {
         aunthenticatedUserId = users[i].userId;
         console.log (aunthenticatedUserId)
         }
-
-// If Username or Password is not right than it counts down possibel attempts
   } 
 }
 // Disabling fields after 3 attempts.
@@ -90,67 +66,127 @@ return false;
 
 //Drecrement amount of attemps and show in span "loginResult"
   attempt--;
-  
   resultSpan.innerText = "You've entered a wrong username or password. You have left "+attempt+" attempt(s).";
   }    
 }
+
+// Setting variable for un-authenticated user input
+var validMail = false;
+var validUsername = false;
+var validPassword = false; 
+var validFirstname = false;
+var validSurname = false;
+
+//Check if username is blank
+function checkUsername(username) {
+  console.log(username);
+    if(username !== "") 
+    {
+      validUsername = true; //Authenticating input 
+      return (validMail)
+    }
+  
+    alert("Please fill in username.")
+    return (false)
+  }; 
+
+// function for valditating email input
+function validateEmailFunc(email) {
+  if (/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(email))
+  {
+    validMail = true; //Authenticating input
+    return (validMail)
+  }
+  alert("You have entered an invalid email address.")
+  return (false)
+};
+
+// function for valditating password 
+function checkPassword(password) {
+
+// at least one number, one lowercase and one uppercase letter
+// at least six characters
+  if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(password))
+  {
+    validPassword = true; //Authenticating input
+    return (validPassword)
+  }
+  alert("Your password should be atleast six characters long, contain one lowercase and one uppercase letter.")
+  return (false)
+}
+
+// function for valditating firstname input 
+function checkFirstname(firstname) {
+
+  // at least one number, one lowercase and one uppercase letter
+  // at least six characters
+    if (/^[a-z\s]+$/.test(firstname))
+    {
+      validFirstname = true; //Authenticating input
+      return (validFirstname)
+    }
+    alert("Your firstname cannot contain !#€%& or other signs")
+    return (false)
+  }
+
+// function for valditating surname input 
+function checkSurname(surname) {
+
+  // at least one number, one lowercase and one uppercase letter
+  // at least six characters
+    if (/^[a-z\s]+$/.test(surname))
+    {
+      validSurname = true; //Authenticating input
+      return (validSurname)
+    }
+    alert("Your surname cannot contain !#€%& or other signs")
+    return (false)
+  }
+
+
+
+
+//If all input has been authenticated, welcome and  redirect user to loginPage
+function userCreated () {
+  if (validMail == true && validUsername == true && validPassword == true && validFirstname == true && validSurname == true){
+    alert ("Welcome " + username + ". You'll now be redirected to the login Page.")
+  window.location = "index.html";
+  }
+}
+
+// On "Click" validate input and push new user into array users
+document.getElementById("registerUser").addEventListener("click", function() {
+  
+    username = document.getElementById("regUsername").value;
+    password = document.getElementById("regPassword").value;
+    firstname = document.getElementById("regFirstname").value;
+    surname = document.getElementById("regSurname").value;
+    email = document.getElementById("regEmail").value;
+
+// Call validateEmail funciton   
+    let validateUsername = checkUsername(username);
+// Call validatePassword function
+    let validatePassword = checkPassword (password);
+    //Etc
+    let validateFirstname = checkFirstname(firstname);
+    //Etc
+    let validateSurname = checkSurname(surname);
+   // Call validateEmail funciton   
+   let validateEmail = validateEmailFunc(email);
+
+//If all input has been authenticated, welcome and  redirect user to loginPage
+    let redirectUser = userCreated (); 
+
+    users.push(new User(username, password, firstname, surname, email));
+    console.log(users);
+    localStorage.setItem('users',JSON.stringify(users));
+      });
+// Redirecting when clicking on buttons 
 function goToRegister () {
     window.location = "registrationForm.html";
   }
-
 function forgotPassword () {
 
     window.location = "resetPassword.html";
   }
 
-// Pushing new user into array Users and storing it using localStorage
-
-
-
-
-
-// var testObject = {regUsername: 'John', 'two':2, 'three': 3 };
-
-// Retrieve the object from storage
-
-//document.getElementById("btnSignUp").addEventListener("click", 
-
-document.getElementById("registerUser").addEventListener("click", function() {
-    username = document.getElementById("regUsername").value;
-    password = document.getElementById("regPassword").value;
-    firstname = document.getElementById("regFirstname").value;
-    surname = document.getElementById("regSurname").value;
-    country = document.getElementById("regCountry").value;
-    email = document.getElementById("regEmail").value;
-    gender = document.getElementById("regGender").value; 
-  
-    users.push(new User(username, password, firstname, surname, country, email, gender));
-    console.log(users);
-    localStorage.setItem('users',JSON.stringify(users));
-    window.location = "index.html";
-      });
-
-// Here
-/*
-users = JSON.parse(localStorage.getItem("users"));
-
-if(users == null){
-    users = [{
-        userName : "dajo14ac@student.cbs.dk",
-        passWord : "1234",
-    }];
-}
-
-document.getElementById("btnSignUp").addEventListener("click", function () {
-    var registerUser = document.getElementById("txtEmailRegister").value;
-    var registerPassword = document.getElementById("txtPasswordRegister").value;
-    var newUser = {
-        username: registerUser,
-        password: registerPassword,
-    };
-    users.push(newUser);
-    console.log(users);
-    localStorage.setItem('users',JSON.stringify(users));
-});
-
-*/

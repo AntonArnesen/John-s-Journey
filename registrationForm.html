@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign up</title>
-   <link rel='stylesheet' href='./style/registrationForm.css' type='text/css'/>
+   <!-- <link rel='stylesheet' href='./style/registrationForm.css' type='text/css'/> 
+   -->
 </head>
     <h1>Sign up</h1>
      <ul>
@@ -17,32 +18,12 @@
         <li><input type="text" name="firstName" id="regFirstname"size="50" /></li>
         <li><label for="surName">Surname:</label></li>
         <li><input type="text" name="surName" id="regSurname"size="50" /></li>
-        <li><label for="country">Country:</label></li>
-        <li><select name="country" id="regCountry">
-    
-        <option selected="" value="Default">(Please select a country)</option>
-    
-        <!-- ADD MORE COUNTRIES; https://www.freeformatter.com/iso-country-list-html-select.html -->
-    
-        <option value="AF">Australia</option>
-        <option value="AL">Canada</option>
-        <option value="DZ">India</option>
-        <option value="AS">Russia</option>
-        <option value="AD">USA</option>
-        <option value="SE">Sweden</option>
-        <option value="DK">Denmark</option>
-        <option value="NO">Norway</option>
-        </select id="regCountry"></li>
-        <li><label for="email">Email:</label></li>
-        <li><input type="text" name="email" id="regEmail" size="50" /></li>
-        <li><label id="regGender">Gender:</label></li>
-        <li><input type="checkbox" name="msex" value="Male" /><span>Male</span></li>
-        <li><input type="checkbox" name="fsex" value="Female" /><span>Female</span></li>
-        <li><input type="checkbox" name="nosex" value="No gender" /><span>Prefer not to disclose</span></li>
-        </select id=regGender></li>
+        <li><label for="mail">Email:</label></li>
+        <li><input type="email" name="email" required id="regEmail" size="50" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"> </li>
         <input type="submit" value="Register" id="registerUser"/>
     </ul>
 
 <script src="./function/index.js"></script>
+<script src="./function/registrationForm.js"></script>
 </body>
 </html>
