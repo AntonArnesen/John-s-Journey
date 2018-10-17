@@ -18,26 +18,36 @@
                 <h2>Create Your Journey</h2>
             </div>
             <div class="modal-body">
-              <p>Just follow the instructions below</p>
-              <label for="eventName">Event Name</label>
-              <input type="eventName" name="eventName" id="regName" size="45" placeholder="Add a short, clear name" />
-              <form action="/action_page.php">
-              <label for="trvlRegion">Select Region</label>
-              <input list="trvlRegion" name="trvlRegion" id="regRegion" size="45" placeholder="Select Region">
-              <datalist id="trvlRegion">
-                <option value="Europe">
-              </datalist>
+              <p>Follow the instructions below</p>
+              <label for="journeyName">Event Name</label>
+              <input type="journeyName" name="journeyName" id="journeyName" size="45" placeholder="Add a short, clear name" />
+              <form action="./createJourney.html">
+                <label for="journeyDep">Flying From</label>
+              <input list="journeyDep" name="journeyDep" id="journeyDp" size="45" placeholder="Airport">
+              <datalist id="journeyDep">
+                  <option value="Cologne Bonn Airport - CGN">Germany</option>
+                  <option value="Hamburg Airport - HAM ">Germany</option>
+                  <option value="Vienna International Airport - VIE">Austria</option>
+                  <option value="Helsinki Airport - HEL">Finland</option>
+                  <option value="Copenhagen Airport - CPH">Denmark</option>
+                  <option value="Amsterdam Schiphol Airport - AMS">Netherlands</option>
+                  <option value="Frankfurt Airport - FRA">Germany</option>
+                  <option value="London Heathrow Airport - LHR">United Kingdom</option>
+                  <option value="Zurich Airport - ZRH">Switzerland</option>
+                  <option value="Munich Airport - MUC">Germany</option>
+                </datalist>
+              <label for="journeyRegi">Flying To</label>
+              <input list="journeyRegi" name="journeyRegi" id="journeyRegion" size="45" placeholder="Region">
+              <datalist id="journeyRegi">
+                <option value="Europe"></datalist>
               <br>
-              <label for="dpDate">Departure Date</label>
-                <input type="date" name="dpDate">
-                <br>
-                <label for="rtDate">Return Date</label>
-                <input type="date" name="rtDate">
-                <br>
                 <label for="message">Description</label>
-                <textarea name="message" rows="10" cols="30">Tell people more about the Journey</textarea>
+                <textarea name="journeyDesc" id="journeyDesc" rows="10" cols="30" placeholder="Tell people more about the Journey"></textarea>
                 <br>
-                <input type="submit" value="Create your Journey" id="createJourney"/>
+                <label for="journeyFriends">Invite Friends</label>
+                <input type="text" name="journeyFriends" id="journeyFriends" size="45" placeholder="Invite by mail">
+                <br>
+                <input type="submit" value="Create your Journey" id="createdJourney"/>
               </form>
               
             </div>
