@@ -4,12 +4,13 @@
 class User {
 
   // The constructor for our class, which will allow us to create new objects of our class
-  constructor(username, password, firstname, surname, email) {
+  constructor(username, password, firstname, surname, email, journeyList) {
     this.username = username;
     this.password = password;
     this.firstname = firstname;
     this.surname = surname;
     this.email = email; 
+    this.journeyList = journeyList;
     }
   } 
 // Create array called users
@@ -19,13 +20,13 @@ var users = JSON.parse(localStorage.getItem("users"));
 // Hardcoded users in the users array
 if(users === null){
   users = [];
-  users.push(new User("CoolJoe", "1234", "Joe", "Reisinger", "joe@email.de"));
-  users.push(new User("CoolAnna", "1234", "Anna", "Reisinger", "joe@email.de"));
+  users.push(new User("CoolJoe", "1234", "Joe", "Reisinger", "joe@email.de", ""));
+  users.push(new User("CoolAnna", "1234", "Anna", "Reisinger", "joe@email.de", ""));
 }
 
 // Define the buttons and span
 var submit = document.getElementById('submit');
-var forget = document.getElementById('forgotPassword');
+var forgot = document.getElementById('forgotPassword');
 var logout = document.getElementById("logout");
 var register = document.getElementById ('registerUser');
 var resultSpan = document.getElementById('loginResult');
@@ -79,7 +80,7 @@ var validFirstname = false;
 var validSurname = false;
 
 //Check if username is blank
-function checkUsername(username) {
+  function checkUsername(username) {
   console.log(username);
     if(username !== "") 
     {
@@ -92,7 +93,7 @@ function checkUsername(username) {
   }; 
 
 // function for valditating email input
-function validateEmailFunc(email) {
+  function validateEmailFunc(email) {
   if (/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(email))
   {
     validMail = true; //Authenticating input
@@ -103,7 +104,7 @@ function validateEmailFunc(email) {
 };
 
 // function for valditating password 
-function checkPassword(password) {
+  function checkPassword(password) {
 
 // at least one number, one lowercase and one uppercase letter
 // at least six characters
@@ -117,7 +118,7 @@ function checkPassword(password) {
 }
 
 // function for valditating firstname input 
-function checkFirstname(firstname) {
+  function checkFirstname(firstname) {
   // at least one number, one lowercase and one uppercase letter
   // at least six characters
     if (/^[a-z\s]+$/.test(firstname))
@@ -130,7 +131,7 @@ function checkFirstname(firstname) {
   }
 
 // function for valditating surname input 
-function checkSurname(surname) {
+  function checkSurname(surname) {
 
   // at least one number, one lowercase and one uppercase letter
   // at least six characters
@@ -144,12 +145,12 @@ function checkSurname(surname) {
   }
 
 //If all input has been authenticated, welcome and  redirect user to loginPage
-function userCreated () {
-  if (validMail == true && validUsername == true && validPassword == true && validFirstname == true && validSurname == true){
-    alert ("Welcome " + username + ". You'll now be redirected to the login Page.")
-  window.location = "index.html";
+  function userCreated () {
+    if (validMail == true && validUsername == true && validPassword == true && validFirstname == true && validSurname == true){
+      alert ("Welcome " + username + ". You'll now be redirected to the login Page.")
+    window.location = "index.html";
+    }
   }
-}
 
 // On "Click" validate input and push new user into array users
 document.getElementById("registerUser").addEventListener("click", function() {
@@ -159,6 +160,7 @@ document.getElementById("registerUser").addEventListener("click", function() {
     firstname = document.getElementById("regFirstname").value;
     surname = document.getElementById("regSurname").value;
     email = document.getElementById("regEmail").value;
+    journeyList = "";
 
 // Call validateEmail funciton   
     let validateUsername = checkUsername(username);
@@ -174,7 +176,7 @@ document.getElementById("registerUser").addEventListener("click", function() {
 //If all input has been authenticated, welcome and  redirect user to loginPage
     let redirectUser = userCreated (); 
 
-    users.push(new User(username, password, firstname, surname, email));
+    users.push(new User(username, password, firstname, surname, email, journeyList));
     console.log(users);
     localStorage.setItem('users',JSON.stringify(users));
       });

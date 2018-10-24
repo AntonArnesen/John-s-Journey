@@ -71,7 +71,6 @@ body{
   }
 
   textarea{ 
-    vertical-align: left;
     margin-top: 2px;
     margin-bottom: 10px;
     float: left;
@@ -79,16 +78,15 @@ body{
   }
 
   [type="submit"] {
-    clear: left;
+    float: auto;
     margin: 20px 0 0 230px;
     font-size:18px
-    }
+    } 
 
   label{
       float: left;
       clear: left;
       width: 100px;
-      text-align: left;
       font-family:Verdana, Arial, Helvetica, sans-serif;
       font-size:12px;
       }
