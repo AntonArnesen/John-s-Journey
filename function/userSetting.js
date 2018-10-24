@@ -46,19 +46,36 @@ var userJourneySettings = JSON.parse(localStorage.getItem("userJourneySettings")
 // Hardcoded users in journeySettings in the array
 if(userJourneySettings === null){
     userJourneySettings = [];
-  }
-      
-
+}
 // Defining varibales - as we get them from the Journey Settings page
 document.getElementById("userJourneySettings").addEventListener("click", function() {
     userBudget = document.getElementById("userJourneyBudget").value;
     userDpDate = document.getElementById("dpDate").value;
     userRtDate = document.getElementById("rtDate").value;
 
+// Push the values taken from the form into the userJourneySettings array 
 userJourneySettings.push(new userSettings (userBudget, userDpDate, userRtDate));
 if(debug == 1){
     console.log("Success");
   }
+// Assign our element the name userJourneySettings in local storage and the value and use JSON function to push the values into one string
 localStorage.setItem('userJourneySettings',JSON.stringify(userJourneySettings));
+//Relocate to the main window after the seetings are submitted 
 window.location = "manageJourney.html"
       });
+
+// Gregor´s try to loop through values in local storage to output lowest Budget 
+var userJourneySettingsLocalStorage = JSON.parse(localStorage.getItem("userJourneySettings"));
+var lowest;
+for (let i = 0; i < userJourneySettingsLocalStorage.length; i++) {
+  if (userJourneySettingsLocalStorage[i].userBudget != 0) {
+    if(lowest == null){
+      lowest = userJourneySettingsLocalStorage[i];
+      continue;
+    }
+    if(userJourneySettingsLocalStorage[i].userBudget < lowest.userBudget){
+      lowest = userJourneySettingsLocalStorage[i];
+    }
+  }
+}
+console.log(lowest.userBudget);

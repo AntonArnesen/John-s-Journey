@@ -1,4 +1,4 @@
-// ADD IDENTATION!!!!!
+// ADD INDENTATION!!!!!
 
 // We create a user class, so we have an easy way to create users and further implement features at a later stage
 class User {
@@ -84,7 +84,7 @@ function checkUsername(username) {
     if(username !== "") 
     {
       validUsername = true; //Authenticating input 
-      return (validMail)
+      return (validUsername)
     }
   
     alert("Please fill in username.")
@@ -183,7 +183,6 @@ function goToRegister () {
     window.location = "registrationForm.html";
   }
 function forgotPassword () {
-
     window.location = "resetPassword.html";
   }
 
