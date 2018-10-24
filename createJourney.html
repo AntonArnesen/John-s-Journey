@@ -9,6 +9,7 @@
     
 
  <body>
+   <!-- Click on this 'modal button' and a pop-up window shows up -->
         <button id="modalBtn" class="button">Click Here To Create Your Journey</button>
 
         <div id="simpleModal" class="modal">
@@ -18,6 +19,7 @@
                 <h2>Create Your Journey</h2>
             </div>
             <div class="modal-body">
+              <!-- The creater of the 'Journey' will now be able to set requirements for the trip-->
               <p>Follow the instructions below</p>
               <label for="journeyName">Event Name</label>
               <input type="journeyName" name="journeyName" id="journeyName" size="45" placeholder="Add a short, clear name" />
@@ -45,16 +47,16 @@
                 <textarea name="journeyDesc" id="journeyDesc" rows="10" cols="30" placeholder="Tell people more about the Journey"></textarea>
                 <br>
                 <label for="journeyFriends">Invite Friends</label>
-                <input type="text" name="journeyFriends" id="journeyFriends" size="45" placeholder="Invite by mail">
+                <input type="text" name="journeyFriends" id="journeyParticipants" size="45" placeholder="Invite by mail">
                 <br>
-                <input type="submit" value="Create your Journey" id="createdJourney"/>
+                <!--By submitting the 'Journey' it stores all the data in the local storage -->
+              <input type="submit" value="Create your Journey" id="createdJourney" onclick="createJourney()"/>
               </form>
-              
             </div>
           </div>
         </div>
     <script src="./function/createJourney.js"></script> 
-   
+    <script src="./function/index.js"></script> 
   
         
 </body>
