@@ -58,12 +58,13 @@
   
 // Defining varibales - as we get them from the Journey Settings page
     function createJourney() {
-      journeyName = document.getElementById("journeyName").value;
-      journeyDp = document.getElementById("journeyDp").value;
-      journeyRegion = document.getElementById("journeyRegion").value;
-      journeyDesc = document.getElementById("journeyDesc").value;
-      journeyParticipants = document.getElementById("journeyParticipants").value;
-      journeyId = '_' + Math.random().toString(36).substr(2, 9);
+
+      let journeyName = document.getElementById("journeyName").value;
+      let journeyDp = document.getElementById("journeyDp").value;
+      let journeyRegion = document.getElementById("journeyRegion").value;
+      let journeyDesc = document.getElementById("journeyDesc").value;
+      let journeyParticipants = document.getElementById("journeyParticipants").value;
+      let journeyId = '_' + Math.random().toString(36).substr(2, 9);
 //include id
     document.getElementById("journeyParticipants").multiple = true;
   console.log(createdJourney);
@@ -74,9 +75,11 @@
 // Loop that goes through the User Data to idetify if the invited participants exist or not
   for (let i = 0; i < users.length; i++) {
     if (journeyParticipants == users[i].email) {
-      users[i].journeyList = createdJourney.journeyId;
+      users[i].journeyList = journeyId;
+      console.log(journeyId)
+      //users[i].journeyList = 'abc';
       localStorage.setItem('users',JSON.stringify(users));
-      alert(journeyParticipants + " has been invited!");
+      alert(journeyParticipants + " has been invited!" + users[i].surname);
 
 //Stringify and push new journey into local storage. 
 
