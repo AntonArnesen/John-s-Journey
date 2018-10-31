@@ -9,3 +9,4 @@ function logOut () {
   username = localStorage.getItem("loggedInUser")
 
   header.textContent = `Thank you ${username} for coming back`
+

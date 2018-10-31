@@ -11,6 +11,7 @@ class User {
     this.surname = surname;
     this.email = email; 
     this.journeyList = journeyList;
+    this.userId = this.userId;
     }
   } 
 // Create array called users
@@ -20,8 +21,8 @@ var users = JSON.parse(localStorage.getItem("users"));
 // Hardcoded users in the users array
 if(users === null){
   users = [];
-  users.push(new User("CoolJoe", "1234", "Joe", "Reisinger", "joe@email.de", ""));
-  users.push(new User("CoolAnna", "1234", "Anna", "Reisinger", "joe@email.de", ""));
+  users.push(new User("CoolJoe", "1234", "Joe", "Reisinger", "joe@email.de", "", "1"));
+  users.push(new User("CoolAnna", "1234", "Anna", "Reisinger", "joe@email.de", "", "2"));
 }
 
 // Define the buttons and span
@@ -113,7 +114,7 @@ var validSurname = false;
     validPassword = true; //Authenticating input
     return (validPassword)
   }
-  alert("Your password should be atleast six characters long, contain one lowercase and one uppercase letter.")
+  alert("Your password should be at least six characters long, contain one lowercase, one uppercase letter and one digit.")
   return (false)
 }
 
@@ -161,6 +162,7 @@ document.getElementById("registerUser").addEventListener("click", function() {
     surname = document.getElementById("regSurname").value;
     email = document.getElementById("regEmail").value;
     journeyList = "";
+    userId = '_' + Math.random().toString(36).substr(2, 9);
 
 // Call validateEmail funciton   
     let validateUsername = checkUsername(username);
@@ -176,7 +178,7 @@ document.getElementById("registerUser").addEventListener("click", function() {
 //If all input has been authenticated, welcome and  redirect user to loginPage
     let redirectUser = userCreated (); 
 
-    users.push(new User(username, password, firstname, surname, email, journeyList));
+    users.push(new User(username, password, firstname, surname, email, journeyList, userId));
     console.log(users);
     localStorage.setItem('users',JSON.stringify(users));
       });
