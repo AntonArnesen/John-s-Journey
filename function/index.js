@@ -4,19 +4,18 @@
 class User {
 
   // The constructor for our class, which will allow us to create new objects of our class
-  constructor(username, password, firstname, surname, email, journeyList) {
+  constructor(username, password, firstname, surname, email, journeyList, userId) {
     this.username = username;
     this.password = password;
     this.firstname = firstname;
     this.surname = surname;
     this.email = email; 
     this.journeyList = journeyList;
-    this.userId = this.userId;
+    this.userId = userId;
     }
   } 
 // Create array called users
 var users = JSON.parse(localStorage.getItem("users"));
-
 
 // Hardcoded users in the users array
 if(users === null){
@@ -182,6 +181,7 @@ document.getElementById("registerUser").addEventListener("click", function() {
     console.log(users);
     localStorage.setItem('users',JSON.stringify(users));
       });
+      
 // Redirecting when clicking on buttons 
 function goToRegister () {
     window.location = "registrationForm.html";
