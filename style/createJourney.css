@@ -58,8 +58,19 @@ body{
     font-size:30px;
     color:#fff;
   }
+  .closeBtn2{
+    color:#ccc;
+    float: right;
+    font-size:30px;
+    color:#fff;
+  }
   
   .closeBtn:hover,.closeBtn:focus{
+    color:#000;
+    text-decoration: none;
+    cursor:pointer;
+  }
+  .closeBtn2:hover,.closeBtn2:focus{
     color:#000;
     text-decoration: none;
     cursor:pointer;

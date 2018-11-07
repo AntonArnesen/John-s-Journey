@@ -152,8 +152,11 @@ var validSurname = false;
     }
   }
 
+  var regUser = document.getElementById("registerUser");
+
+  if(regUser !== null){
 // On "Click" validate input and push new user into array users
-document.getElementById("registerUser").addEventListener("click", function() {
+regUser.addEventListener("click", function() {
   
     username = document.getElementById("regUsername").value;
     password = document.getElementById("regPassword").value;
@@ -181,6 +184,7 @@ document.getElementById("registerUser").addEventListener("click", function() {
     console.log(users);
     localStorage.setItem('users',JSON.stringify(users));
       });
+    }
       
 // Redirecting when clicking on buttons 
 function goToRegister () {

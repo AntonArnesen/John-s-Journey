@@ -1,4 +1,4 @@
-// Get modal element
+/*// Get modal element
   var modal = document.getElementById('simpleModal');
 // Get open modal button
   var modalBtn = document.getElementById('modalBtn');
@@ -27,7 +27,7 @@
   if(e.target == modal){
     modal.style.display = 'none';
   }
-}
+  } */
 
 //create class Settings
   class journeySettings {
@@ -58,19 +58,21 @@
   
 // Defining varibales - as we get them from the Journey Settings page
     function createJourney() {
-
+      
       let journeyName = document.getElementById("journeyName").value;
       let journeyDp = document.getElementById("journeyDp").value;
       let journeyRegion = document.getElementById("journeyRegion").value;
       let journeyDesc = document.getElementById("journeyDesc").value;
       let journeyParticipants = document.getElementById("journeyParticipants").value;
       let journeyId = '_' + Math.random().toString(36).substr(2, 9);
-//include id
-    document.getElementById("journeyParticipants").multiple = true;
-  console.log(createdJourney);
-    createdJourney.push(new journeySettings (journeyName, journeyDp, journeyRegion, journeyDesc, journeyParticipants, journeyId));
-    
-    
+  
+      document.getElementById("journeyParticipants").multiple = true;
+      console.log(createdJourney);
+      createdJourney.push(new journeySettings (journeyName, journeyDp, journeyRegion, journeyDesc, journeyParticipants, journeyId));
+      localStorage.setItem('createdJourney',JSON.stringify(createdJourney));
+    }    
+    /*
+
 
 // Loop that goes through the User Data to idetify if the invited participants exist or not
   for (let i = 0; i < users.length; i++) {
@@ -87,11 +89,10 @@
 // direct to after 'create journey' window.location = "journeyOverview.html"
 
 } 
-localStorage.setItem('createdJourney',JSON.stringify(createdJourney));
+
 }   
 
  };
       
-
-
+*/
 
