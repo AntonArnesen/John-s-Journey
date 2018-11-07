@@ -1,16 +1,16 @@
-// Debug variable 
+// Debug variable - if 1 debug console is running 
 var debug = 0;
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 // SECTION: Form functionalities 
 // Get modal element
-var modal = document.getElementById('simpleModal');
+var modal = document.getElementById('simpleModal2');
 // Get open modal button
-var modalBtn = document.getElementById('modalBtn');
+var modalBtn = document.getElementById('modalBtn2');
 // Get close button
-var closeBtn = document.getElementsByClassName('closeBtn')[0];
+var closeBtn = document.getElementsByClassName('closeBtn2')[0];
 
 // Listen for open click
-modalBtn.addEventListener('click', openModal);
+modalBtn2.addEventListener('click', openModal);
 // Listen for close click
 closeBtn.addEventListener('click', closeModal);
 // Listen for outside click
@@ -147,7 +147,7 @@ class flightSettings {
   // Hardcoded users in journeyFlightSettings in the array
   if(journeyFlightSettings === null){
      journeyFlightSettings = [];
-     journeyFlightSettings.push(new flightSettings(1234, "John´s Journey", "2018-10-30", "2018-11-10", 400, "Copenhagen", "Europe"));
+     journeyFlightSettings.push(new flightSettings(5555, "John´s Journey", "2018-10-30", "2018-11-10", 15000, "Copenhagen", "Europe"));
   }
   
   // Defining varibales - as we get them from local storage
@@ -161,6 +161,7 @@ class flightSettings {
      lowestUserBudget = localStorage.getItem("lowestUserBudget");
      journeyDp = journeyName = flightJourneySettingsLocalStorage[1].journeyDp;
      journeyRegion = journeyName = flightJourneySettingsLocalStorage[1].journeyRegion;
+ // TO DO: We need one more variable for number of participants
 
   // Push the values taken from the form into the journeyFlightSettings array 
   journeyFlightSettings.push(new flightSettings (journeyId, journeyName, highestDpDate, lowestRtDate, lowestUserBudget, journeyDp,journeyRegion));
@@ -170,32 +171,7 @@ class flightSettings {
   // Push journeyFlightSettings into local storage
 localStorage.setItem('journeyFlightSettings',JSON.stringify(journeyFlightSettings));
 /*-------------------------------------------------------------------------------------------------------------------------------*/
-/*
-// SECTION: Assign a nummerical number to every date of the year
-// Function that returns that replaces date with numerical value
 
-function returnNummericalDate(userDepDate) {
-  // Hardcoded dates (YYYY-MM-DD)
-  var dateToNumber = [
-  // JAN - Numbers 1-31
-    "2018-01-01", "2018-02-01","2018-03-01","2018-04-01","2018-05-01","2018-06-01","2018-07-01","2018-08-01","2018-09-01","2018-10-01","2018-11-01","2018-12-01","2018-13-01","2018-14-01","2018-15-01","2018-16-01","2018-17-01","2018-18-01","2018-19-01","2018-20-01","2018-21-01","2018-22-01","2018-23-01","2018-24-01","2018-25-01","2018-26-01","2018-27-01","2018-28-01","2018-29-01","2018-30-01","2018-31-01",
-  // FEB - Numbers 32-61
-    "2018-01-02", "2018-02-02","2018-03-02","2018-04-02","2018-05-02","2018-06-02","2018-07-02","2018-08-02","2018-09-02","2018-10-02","2018-11-02","2018-12-02","2018-13-02","2018-14-02","2018-15-02","2018-16-02","2018-17-02","2018-18-02","2018-19-02","2018-20-02","2018-21-02","2018-22-02","2018-23-02","2018-24-02","2018-25-02","2018-26-02","2018-27-02","2018-28-02","2018-29-02","2018-30-02",
-  // MAR - Numbers 62-92
-    "2018-01-03", "2018-02-03","2018-03-03","2018-04-03","2018-05-03","2018-06-03","2018-07-03","2018-08-03","2018-09-03","2018-10-03","2018-11-03","2018-12-03","2018-13-03","2018-14-03","2018-15-03","2018-16-03","2018-17-03","2018-18-03","2018-19-03","2018-20-03","2018-21-03","2018-22-03","2018-23-03","2018-24-03","2018-25-03","2018-26-03","2018-27-03","2018-28-03","2018-29-03","2018-30-03", "2018-31-03",
-  // APR - Numbers 93-122
-  "2018-01-04", "2018-02-04","2018-03-04","2018-04-04","2018-05-04","2018-06-04","2018-07-04","2018-08-04","2018-09-04","2018-10-04","2018-11-04","2018-12-04","2018-13-04","2018-14-04","2018-15-04","2018-16-04","2018-17-04","2018-18-04","2018-19-04","2018-20-04","2018-21-04","2018-22-04","2018-23-04","2018-24-04","2018-25-04","2018-26-04","2018-27-04","2018-28-04","2018-29-04","2018-30-04"
-  ]
-  
-  // Loop that is running through the function to find date (input value) an replace with a numerical number
-  for(let i = 0; i < dateToNumber.length; i++) {
-    if(userDepDate == dateToNumber[i])
-    return i + 1;
-    }
-  }
-  
-  // Maybe the need for JSON here 
-  var userDepDate = returnNummericalDate("2018-30-03");
-  if (debug == 1) {
-    console.log(userDepDate);
-  } */
+// Recall Flight Settings from local storage 
+// Redirect to page with all your information presented
+// Manipulate URL to show the right flight options

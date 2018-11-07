@@ -6,13 +6,100 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Journey Overview</title>
     <link rel="stylesheet" href="./style/journeyOverview.css" type="css">
+    <link rel="stylesheet" href="./style/createJourney.css" type="text/css">
 </head>
 <body>
 <h1 id="headerId"></h1>
-  
-  
+
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-- SECTION: Manage Journey Button/ Form -->
+<button id="modalBtn2" class="button">Click Here To Manage Your Journey</button>
+
+        <div id="simpleModal2" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+                <span class="closeBtn2">&times;</span>
+                <h2>Set your Budget & Availability</h2>
+            </div>
+            <div class="modal-body">
+              <p>How cheap are you?</p>
+              <label for="journeyBudget">Your Budget in € </label>
+              <input type="journeyBudget" name="journeyBudget" id="userJourneyBudget" size="45" placeholder="Tell the group, how many pennies you have left" />
+              <!--action redirects to the next page, which is the same at this point-->
+              <form action="./manageJourney.html">
+              <br>
+              <p>When are you free?</p>
+              <label for="dpDate">Departure Date</label>
+                <input type="date" name="dpDate" id="dpDate">
+                <br>
+                <label for="rtDate">Return Date</label>
+                <input type="date" name="rtDate" id="rtDate">
+                <br>
+                <br>
+                <input type="submit" value="Get started" id="userJourneySettings"/>
+              </form>
+              
+            </div>
+          </div>
+        </div>
+    <!-------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-- SECTION: Create Journey Button/ Form -->
+<!-- Click on this 'modal button' and a pop-up window shows up -->
+<button id="modalBtn" class="button">Click Here To Create Your Journey</button>
+
+<div id="simpleModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+        <span class="closeBtn">&times;</span>
+        <h2>Create Your Journey</h2>
+    </div>
+    <div class="modal-body">
+      <!-- The creater of the 'Journey' will now be able to set requirements for the trip-->
+      <p>Follow the instructions below</p>
+      <label for="journeyName">Event Name</label>
+      <input type="journeyName" name="journeyName" id="journeyName" size="45" placeholder="Add a short, clear name" />
+      <form action="./createJourney.html">
+        <label for="journeyDep">Flying From</label>
+      <input list="journeyDep" name="journeyDep" id="journeyDp" size="45" placeholder="Airport">
+      <datalist id="journeyDep">
+          <option value="Cologne Bonn Airport - CGN">Germany</option>
+          <option value="Hamburg Airport - HAM ">Germany</option>
+          <option value="Vienna International Airport - VIE">Austria</option>
+          <option value="Helsinki Airport - HEL">Finland</option>
+          <option value="Copenhagen Airport - CPH">Denmark</option>
+          <option value="Amsterdam Schiphol Airport - AMS">Netherlands</option>
+          <option value="Frankfurt Airport - FRA">Germany</option>
+          <option value="London Heathrow Airport - LHR">United Kingdom</option>
+          <option value="Zurich Airport - ZRH">Switzerland</option>
+          <option value="Munich Airport - MUC">Germany</option>
+        </datalist>
+      <label for="journeyRegi">Flying To</label>
+      <input list="journeyRegi" name="journeyRegi" id="journeyRegion" size="45" placeholder="Region">
+      <datalist id="journeyRegi">
+        <option value="Europe"></datalist>
+      <br>
+        <label for="message">Description</label>
+        <textarea name="journeyDesc" id="journeyDesc" rows="10" cols="30" placeholder="Tell people more about the Journey"></textarea>
+        <br>
+        <label for="journeyFriends">Invite Friends</label>
+        <input type="text" name="journeyFriends" id="journeyParticipants" size="45" placeholder="Invite by mail">
+        <br>
+        <!--By submitting the 'Journey' it stores all the data in the local storage -->
+      <input type="submit" value="Create your Journey" id="createdJourney" onclick="createJourney()"/>
+      </form>
+    </div>
+  </div>
+</div>
+
+        <br>
+    <br>
+    <div>
     <input type="button" value="Log out"  id="logout" onclick="logOut()"/>
+    </div>
   
     <script src="./function/journeyOverview.js"></script>
+    <script src="./function/createJourney.js"></script>
+    <script src="./function/userSetting.js"></script>  
 </body>
 </html>
