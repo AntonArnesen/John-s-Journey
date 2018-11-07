@@ -3,14 +3,16 @@ var debug = 0;
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 // SECTION: Form functionalities 
 // Get modal element
+ 
+/* 
 var modal = document.getElementById('simpleModal2');
 // Get open modal button
-var modalBtn = document.getElementById('modalBtn2');
+var modalBtn = document.getElementById('modalBtn');
 // Get close button
 var closeBtn = document.getElementsByClassName('closeBtn2')[0];
 
 // Listen for open click
-modalBtn2.addEventListener('click', openModal);
+modalBtn.addEventListener('click', openModal);
 // Listen for close click
 closeBtn.addEventListener('click', closeModal);
 // Listen for outside click
@@ -32,6 +34,7 @@ function outsideClick(e){
     modal.style.display = 'none';
   }
 }
+*/
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 // SECTION: Push Form inputs into local storage
 //create class Settings
@@ -165,8 +168,9 @@ class flightSettings {
 
   // Push the values taken from the form into the journeyFlightSettings array 
   journeyFlightSettings.push(new flightSettings (journeyId, journeyName, highestDpDate, lowestRtDate, lowestUserBudget, journeyDp,journeyRegion));
-   //  if(debug == 1){
+   if(debug == 1){
          console.log(journeyFlightSettings);
+  }
 
   // Push journeyFlightSettings into local storage
 localStorage.setItem('journeyFlightSettings',JSON.stringify(journeyFlightSettings));
@@ -175,3 +179,19 @@ localStorage.setItem('journeyFlightSettings',JSON.stringify(journeyFlightSetting
 // Recall Flight Settings from local storage 
 // Redirect to page with all your information presented
 // Manipulate URL to show the right flight options
+
+// Try to set URL specific for every 
+
+var finalFlightSettings = JSON.parse(localStorage.getItem("journeyFlightSettings"));
+var urlDeparture
+var urlDestination
+var button = document.getElementById("button")
+
+button.onclick = function () {
+  if (finalFlightSettings[1].journeyDp == "Helsinki Airport - HEL") {
+    window.location.href = "https://www.google.dk/flights/?lite=0#flt=HEL.r/m/02j9z."+finalFlightSettings[1].highestDpDate+"r/m/02j9z.HEL."+finalFlightSettings[1].lowestRtDate+";c:EUR;e:1;px:2;sd:1;t:e"
+  }
+  //else 
+  }
+
+//console.log(setURL());
