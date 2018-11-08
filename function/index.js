@@ -165,7 +165,7 @@ regUser.addEventListener("click", function() {
     email = document.getElementById("regEmail").value;
     journeyList = "";
     userId = '_' + Math.random().toString(36).substr(2, 9);
-
+/*
 // Call validateEmail funciton   
     let validateUsername = checkUsername(username);
 // Call validatePassword function
@@ -178,7 +178,7 @@ regUser.addEventListener("click", function() {
    let validateEmail = validateEmailFunc(email);
 
 //If all input has been authenticated, welcome and  redirect user to loginPage
-    let redirectUser = userCreated (); 
+    let redirectUser = userCreated (); */ 
 
     users.push(new User(username, password, firstname, surname, email, journeyList, userId));
     console.log(users);

@@ -2,6 +2,7 @@
 var debug = 0;
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 // SECTION: Form functionalities 
+// Possible to make this section more efficient? See if one or the other are being clicked 
 // Get modal element
 var modal = document.getElementById('simpleModal');
 var modal2 = document.getElementById('simpleModal2');
@@ -52,7 +53,7 @@ function outsideClick(e){
     }
 }
 /*-------------------------------------------------------------------------------------------------------------------------------*/
-// SECTION: Push Form inputs into local storage
+// SECTION: Push Manage journey-form inputs into local storage
 //create class Settings
 class userSettings {
 
@@ -63,7 +64,7 @@ constructor(userBudget, userDpDate, userRtDate) {
     this.userRtDate = userRtDate;
     }
 };
-// Create var called userJourneySettings - ADD COMENTS
+// Create var called userJourneySettings, parse converts the string into an object, where the string is retrieved from other file - ADD COMENTS
 var userJourneySettings = JSON.parse(localStorage.getItem("userJourneySettings"));
 
 // Hardcoded users in journeySettings in the array
@@ -174,12 +175,13 @@ class flightSettings {
   var flightJourneySettingsLocalStorage = JSON.parse(localStorage.getItem("createdJourney"));
   // How should the system know for which journey we are checking??? [1] -> müsste es selber herausfinden
      journeyId = flightJourneySettingsLocalStorage[1].journeyId;
+
      journeyName = flightJourneySettingsLocalStorage[1].journeyName;
      highestDpDate = localStorage.getItem("highestDpDate");
      lowestRtDate = localStorage.getItem("lowestRtDate");
      lowestUserBudget = localStorage.getItem("lowestUserBudget");
-     journeyDp = journeyName = flightJourneySettingsLocalStorage[1].journeyDp;
-     journeyRegion = journeyName = flightJourneySettingsLocalStorage[1].journeyRegion;
+     journeyDp = flightJourneySettingsLocalStorage[1].journeyDp;
+     journeyRegion = flightJourneySettingsLocalStorage[1].journeyRegion;
  // TO DO: We need one more variable for number of participants
 
   // Push the values taken from the form into the journeyFlightSettings array 
