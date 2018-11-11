@@ -14,7 +14,7 @@ class User {
     this.userId = userId;
     }
   } 
-// Create array called users
+// Create array called users (JSON.parse: data becomes a JavaScript object)
 var users = JSON.parse(localStorage.getItem("users"));
 
 // Hardcoded users in the users array
@@ -24,7 +24,7 @@ if(users === null){
   users.push(new User("CoolAnna", "1234", "Anna", "Reisinger", "joe@email.de", "", "2"));
 }
 
-// Define the buttons and span
+// Define the buttons and span (method that returns the element that has the ID attribute with the specified value)
 var submit = document.getElementById('submit');
 var forgot = document.getElementById('forgotPassword');
 var logout = document.getElementById("logout");
@@ -34,7 +34,7 @@ var resultSpan = document.getElementById('loginResult');
 // Variabel to define the amount of wrong attempts you have
 var attempt = 3;
 
-// Function to go through the User Data to match Username/Password
+// Function that goes through user data to match username and password
 function getInfo() {
   var username = document.getElementById("username").value
   var password = document.getElementById("password").value
@@ -44,7 +44,7 @@ function getInfo() {
       if (username == users[i].username && password == users[i].password) {
         {console.log (username + " is logged in!");
 
-//Push username from logged in User in the local storage 
+//Save username from logged in user in the local storage 
         localStorage.setItem("loggedInUser", users[i].firstname);
 
 //redirect to new html side for logged in users 
@@ -56,7 +56,7 @@ function getInfo() {
         }
   } 
 }
-// Disabling fields after 3 attempts.
+// Disabling fields after 3 failed attempts.
 if( attempt == 0){    
     document.getElementById("username").disabled = true;
     document.getElementById("password").disabled = true;
@@ -144,7 +144,7 @@ var validSurname = false;
     return (false)
   }
 
-//If all input has been authenticated, welcome and  redirect user to loginPage
+//If all input has been authenticated, welcome and redirect user to loginPage
   function userCreated () {
     if (validMail == true && validUsername == true && validPassword == true && validFirstname == true && validSurname == true){
       alert ("Welcome " + username + ". You'll now be redirected to the login Page.")

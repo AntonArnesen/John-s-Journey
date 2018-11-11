@@ -70,7 +70,7 @@ constructor(userBudget, userDpDate, userRtDate) {
     this.userRtDate = userRtDate;
     }
 };
-// Create var called userJourneySettings, parse converts the string into an object, where the string is retrieved from other file - ADD COMENTS
+// Create variable called userJourneySettings, parse converts the string into an object, where the string is retrieved from other file - ADD COMENTS
 var userJourneySettings = JSON.parse(localStorage.getItem("userJourneySettings"));
 
 // Hardcoded users in journeySettings in the array
@@ -165,23 +165,14 @@ class flightSettings {
       this.lowestUserBudget = lowestUserBudget;
       this.journeyDp = journeyDp;
       this.journeyRegion = journeyRegion;
-      this.email = this.email;
       }
   };
   // Create var called userFlightSettings
   var journeyFlightSettings = JSON.parse(localStorage.getItem("journeyFlightSettings"));
   
-  function getInfo() {
-    var email = document.getElementById("journeyParticipants").value
-  // Hardcoded users in journeyFlightSettings in the array
-  var email = null
-  for (let i = 0; i < users.length; i++) {
-    if (email == users[i].email) {
-      {console.log (username + " is logged in!");
-    }
   if(journeyFlightSettings === null){
      journeyFlightSettings = [];
-     journeyFlightSettings.push(new flightSettings(5555, "John´s Journey", "2018-10-30", "2018-11-10", 15000, "Copenhagen", "Europe", email = []));
+     journeyFlightSettings.push(new flightSettings(5555, "John´s Journey", "2018-10-30", "2018-11-10", 15000, "Copenhagen", "Europe"));
   }
   console.log(journeyFlightSettings)
   // Defining varibales - as we get them from local storage
