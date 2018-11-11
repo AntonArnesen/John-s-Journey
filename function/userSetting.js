@@ -4,30 +4,24 @@ var debug = 0;
 // SECTION: Form functionalities 
 // Possible to make this section more efficient? See if one or the other are being clicked 
 // Get modal element
-<<<<<<< HEAD
  
-/* 
+
 var modal = document.getElementById('simpleModal2');
 // Get open modal button
 var modalBtn = document.getElementById('modalBtn');
-=======
 var modal = document.getElementById('simpleModal');
 var modal2 = document.getElementById('simpleModal2');
 // Get open modal button
 var modalBtn = document.getElementById('modalBtn');
 var modalBtn2 = document.getElementById('modalBtn2');
->>>>>>> af1b5c0ea9c38db59420efe469a31321d4c0908f
 // Get close button
 var closeBtn = document.getElementsByClassName('closeBtn')[0];
 var closeBtn2 = document.getElementsByClassName('closeBtn2')[0];
 
 // Listen for open click
 modalBtn.addEventListener('click', openModal);
-<<<<<<< HEAD
-=======
 modalBtn2.addEventListener('click', openModal2);
 
->>>>>>> af1b5c0ea9c38db59420efe469a31321d4c0908f
 // Listen for close click
 closeBtn.addEventListener('click', closeModal);
 closeBtn2.addEventListener('click', closeModal2);
@@ -58,15 +52,12 @@ function outsideClick(e){
     modal.style.display = 'none';
   }
 }
-<<<<<<< HEAD
-*/
-=======
+
   function outsideClick2(e){
     if(e.target == modal2){
       modal2.style.display = 'none';
     }
 }
->>>>>>> af1b5c0ea9c38db59420efe469a31321d4c0908f
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 // SECTION: Push Manage journey-form inputs into local storage
 //create class Settings
@@ -174,17 +165,25 @@ class flightSettings {
       this.lowestUserBudget = lowestUserBudget;
       this.journeyDp = journeyDp;
       this.journeyRegion = journeyRegion;
+      this.email = this.email;
       }
   };
   // Create var called userFlightSettings
   var journeyFlightSettings = JSON.parse(localStorage.getItem("journeyFlightSettings"));
   
+  function getInfo() {
+    var email = document.getElementById("journeyParticipants").value
   // Hardcoded users in journeyFlightSettings in the array
+  var email = null
+  for (let i = 0; i < users.length; i++) {
+    if (email == users[i].email) {
+      {console.log (username + " is logged in!");
+    }
   if(journeyFlightSettings === null){
      journeyFlightSettings = [];
-     journeyFlightSettings.push(new flightSettings(5555, "John´s Journey", "2018-10-30", "2018-11-10", 15000, "Copenhagen", "Europe"));
+     journeyFlightSettings.push(new flightSettings(5555, "John´s Journey", "2018-10-30", "2018-11-10", 15000, "Copenhagen", "Europe", email = []));
   }
-  
+  console.log(journeyFlightSettings)
   // Defining varibales - as we get them from local storage
   // You need to define a variable first to unpack the JSON String and then you can target single values 
   var flightJourneySettingsLocalStorage = JSON.parse(localStorage.getItem("createdJourney"));
@@ -209,12 +208,14 @@ class flightSettings {
 localStorage.setItem('journeyFlightSettings',JSON.stringify(journeyFlightSettings));
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 
+
+
 // Recall Flight Settings from local storage 
 // Redirect to page with all your information presented
 // Manipulate URL to show the right flight options
 
 // Try to set URL specific for every 
-
+/*
 var finalFlightSettings = JSON.parse(localStorage.getItem("journeyFlightSettings"));
 var urlDeparture
 var urlDestination
@@ -225,6 +226,6 @@ button.onclick = function () {
     window.location.href = "https://www.google.dk/flights/?lite=0#flt=HEL.r/m/02j9z."+finalFlightSettings[1].highestDpDate+"r/m/02j9z.HEL."+finalFlightSettings[1].lowestRtDate+";c:EUR;e:1;px:2;sd:1;t:e"
   }
   //else 
-  }
+}*/
 
 //console.log(setURL());
