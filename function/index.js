@@ -152,8 +152,11 @@ var validSurname = false;
     }
   }
 
+  var regUser = document.getElementById("registerUser");
+
+  if(regUser !== null){
 // On "Click" validate input and push new user into array users
-document.getElementById("registerUser").addEventListener("click", function() {
+regUser.addEventListener("click", function() {
   
     username = document.getElementById("regUsername").value;
     password = document.getElementById("regPassword").value;
@@ -162,7 +165,7 @@ document.getElementById("registerUser").addEventListener("click", function() {
     email = document.getElementById("regEmail").value;
     journeyList = "";
     userId = '_' + Math.random().toString(36).substr(2, 9);
-
+/*
 // Call validateEmail funciton   
     let validateUsername = checkUsername(username);
 // Call validatePassword function
@@ -175,12 +178,13 @@ document.getElementById("registerUser").addEventListener("click", function() {
    let validateEmail = validateEmailFunc(email);
 
 //If all input has been authenticated, welcome and  redirect user to loginPage
-    let redirectUser = userCreated (); 
+    let redirectUser = userCreated (); */ 
 
     users.push(new User(username, password, firstname, surname, email, journeyList, userId));
     console.log(users);
     localStorage.setItem('users',JSON.stringify(users));
       });
+    }
       
 // Redirecting when clicking on buttons 
 function goToRegister () {

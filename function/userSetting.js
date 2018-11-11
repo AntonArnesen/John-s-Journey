@@ -2,30 +2,54 @@
 var debug = 0;
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 // SECTION: Form functionalities 
+// Possible to make this section more efficient? See if one or the other are being clicked 
 // Get modal element
+<<<<<<< HEAD
  
 /* 
 var modal = document.getElementById('simpleModal2');
 // Get open modal button
 var modalBtn = document.getElementById('modalBtn');
+=======
+var modal = document.getElementById('simpleModal');
+var modal2 = document.getElementById('simpleModal2');
+// Get open modal button
+var modalBtn = document.getElementById('modalBtn');
+var modalBtn2 = document.getElementById('modalBtn2');
+>>>>>>> af1b5c0ea9c38db59420efe469a31321d4c0908f
 // Get close button
-var closeBtn = document.getElementsByClassName('closeBtn2')[0];
+var closeBtn = document.getElementsByClassName('closeBtn')[0];
+var closeBtn2 = document.getElementsByClassName('closeBtn2')[0];
 
 // Listen for open click
 modalBtn.addEventListener('click', openModal);
+<<<<<<< HEAD
+=======
+modalBtn2.addEventListener('click', openModal2);
+
+>>>>>>> af1b5c0ea9c38db59420efe469a31321d4c0908f
 // Listen for close click
 closeBtn.addEventListener('click', closeModal);
+closeBtn2.addEventListener('click', closeModal2);
+
 // Listen for outside click
 window.addEventListener('click', outsideClick);
+window.addEventListener('click', outsideClick2);
 
 // Function to open modal
 function openModal(){
   modal.style.display = 'block';
 }
+function openModal2(){
+  modal2.style.display = 'block';
+}
 
 // Function to close modal
 function closeModal(){
   modal.style.display = 'none';
+}
+function closeModal2(){
+  modal2.style.display = 'none';
 }
 
 // Function to close modal if outside click
@@ -34,9 +58,17 @@ function outsideClick(e){
     modal.style.display = 'none';
   }
 }
+<<<<<<< HEAD
 */
+=======
+  function outsideClick2(e){
+    if(e.target == modal2){
+      modal2.style.display = 'none';
+    }
+}
+>>>>>>> af1b5c0ea9c38db59420efe469a31321d4c0908f
 /*-------------------------------------------------------------------------------------------------------------------------------*/
-// SECTION: Push Form inputs into local storage
+// SECTION: Push Manage journey-form inputs into local storage
 //create class Settings
 class userSettings {
 
@@ -47,7 +79,7 @@ constructor(userBudget, userDpDate, userRtDate) {
     this.userRtDate = userRtDate;
     }
 };
-// Create var called userJourneySettings - ADD COMENTS
+// Create var called userJourneySettings, parse converts the string into an object, where the string is retrieved from other file - ADD COMENTS
 var userJourneySettings = JSON.parse(localStorage.getItem("userJourneySettings"));
 
 // Hardcoded users in journeySettings in the array
@@ -158,12 +190,13 @@ class flightSettings {
   var flightJourneySettingsLocalStorage = JSON.parse(localStorage.getItem("createdJourney"));
   // How should the system know for which journey we are checking??? [1] -> müsste es selber herausfinden
      journeyId = flightJourneySettingsLocalStorage[1].journeyId;
+
      journeyName = flightJourneySettingsLocalStorage[1].journeyName;
      highestDpDate = localStorage.getItem("highestDpDate");
      lowestRtDate = localStorage.getItem("lowestRtDate");
      lowestUserBudget = localStorage.getItem("lowestUserBudget");
-     journeyDp = journeyName = flightJourneySettingsLocalStorage[1].journeyDp;
-     journeyRegion = journeyName = flightJourneySettingsLocalStorage[1].journeyRegion;
+     journeyDp = flightJourneySettingsLocalStorage[1].journeyDp;
+     journeyRegion = flightJourneySettingsLocalStorage[1].journeyRegion;
  // TO DO: We need one more variable for number of participants
 
   // Push the values taken from the form into the journeyFlightSettings array 
