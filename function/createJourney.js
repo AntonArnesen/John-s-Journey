@@ -43,13 +43,10 @@
       }
   };
 
-  
 // Create var called createdJourney
   var createdJourney = JSON.parse(localStorage.getItem("createdJourney"));
 // Get the information about the users in the Index.js
   var users = JSON.parse(localStorage.getItem("users"));
-
-
 
 // Hardcoded users in journeySettings in the array
   if(createdJourney === null){
@@ -66,6 +63,7 @@
       let journeyDesc = document.getElementById("journeyDesc").value;
       let journeyParticipants = document.getElementById("journeyParticipants").value;
       let journeyId = '_' + Math.random().toString(36).substr(2, 9);
+      
   //allows more than one email address in the field when using comma ","
       document.getElementById("journeyParticipants").multiple = true;
       console.log(createdJourney);
@@ -75,8 +73,9 @@
       
       /*Loops through the local storage in order to check if the invited person/persons email matches with the 'database'
       and then push the journeyId into the journeyList of that user/s*/
-      for (let i = 0; i < users.length; i++) {
-        if (journeyParticipants == users[i].email || localStorage.getItem("loggedInUserId") == users[i].id) {
+
+      for (let i = 0; i < users.length; i++) { 
+        if (journeyParticipants == users[i].email) {
           users[i].journeyList = journeyId;
 
           console.log(journeyId)
@@ -90,6 +89,11 @@
     };    
   
 
+      // direct to after 'create journey'
+      // window.location = "journeyOverview.html"
+        
+    /*
+
 
 // Loop that goes through the User Data to idetify if the invited participants exist or not
 
@@ -98,3 +102,11 @@
 
 
 // direct to after 'create journey' window.location = "journeyOverview.html"
+} 
+
+}   
+
+ };
+      
+*/
+

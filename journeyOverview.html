@@ -27,7 +27,7 @@
               <label for="journeyBudget">Your Budget in € </label>
               <input type="journeyBudget" name="journeyBudget" id="userJourneyBudget" size="45" placeholder="Tell the group, how many pennies you have left" />
               <!--action redirects to the next page, which is the same at this point-->
-              <form action="./manageJourney.html">
+              <form action="./journeyOverview.html">
               <br>
               <p>When are you free?</p>
               <label for="dpDate">Departure Date</label>
@@ -37,7 +37,7 @@
                 <input type="date" name="rtDate" id="rtDate">
                 <br>
                 <br>
-                <input type="submit" value="Get started" id="userJourneySettings"/>
+                <input type="submit" value="Get started" id="userJourneySettings" onclick="createUserSettings()"/>
               </form>
               
             </div>
@@ -59,7 +59,7 @@
       <p>Follow the instructions below</p>
       <label for="journeyName">Event Name</label>
       <input type="journeyName" name="journeyName" id="journeyName" size="45" placeholder="Add a short, clear name" />
-      <form action="./createJourney.html">
+      <form action="./journeyOverview.html">
         <label for="journeyDep">Flying From</label>
       <input list="journeyDep" name="journeyDep" id="journeyDp" size="45" placeholder="Airport">
       <datalist id="journeyDep">
@@ -103,6 +103,6 @@
   
     <script src="./function/journeyOverview.js"></script>
     <script src="./function/createJourney.js"></script>
-    <script src="./function/userSetting.js"></script>  
+   <script src="./function/userSetting.js"></script>
 </body>
 </html>
