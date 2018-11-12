@@ -46,7 +46,8 @@
   
 // Create var called createdJourney
   var createdJourney = JSON.parse(localStorage.getItem("createdJourney"));
-  //var tempUsers = JSON.parse(localStorage.getItem("users"));
+// Get the information about the users in the Index.js
+  var users = JSON.parse(localStorage.getItem("users"));
 
 
 
@@ -65,34 +66,35 @@
       let journeyDesc = document.getElementById("journeyDesc").value;
       let journeyParticipants = document.getElementById("journeyParticipants").value;
       let journeyId = '_' + Math.random().toString(36).substr(2, 9);
-  
+  //allows more than one email address in the field when using comma ","
       document.getElementById("journeyParticipants").multiple = true;
       console.log(createdJourney);
+
       createdJourney.push(new journeySettings (journeyName, journeyDp, journeyRegion, journeyDesc, journeyParticipants, journeyId));
       localStorage.setItem('createdJourney',JSON.stringify(createdJourney));
-    }    
-    /*
+      
+      /*Loops through the local storage in order to check if the invited person/persons email matches with the 'database'
+      and then push the journeyId into the journeyList of that user/s*/
+      for (let i = 0; i < users.length; i++) {
+        if (journeyParticipants == users[i].email || localStorage.getItem("loggedInUserId") == users[i].id) {
+          users[i].journeyList = journeyId;
+
+          console.log(journeyId)
+    
+        //Set the new, added ID to the object of the user
+          localStorage.setItem('users',JSON.stringify(users));
+          
+          alert(journeyParticipants + " has been invited!" + users[i].surname);
+    }
+    }
+    };    
+  
 
 
 // Loop that goes through the User Data to idetify if the invited participants exist or not
-  for (let i = 0; i < users.length; i++) {
-    if (journeyParticipants == users[i].email) {
-      users[i].journeyList = journeyId;
-      console.log(journeyId)
-      //users[i].journeyList = 'abc';
-      localStorage.setItem('users',JSON.stringify(users));
-      alert(journeyParticipants + " has been invited!" + users[i].surname);
 
-//Stringify and push new journey into local storage. 
+  
+// Stringify and push new journey into local storage. 
 
 
 // direct to after 'create journey' window.location = "journeyOverview.html"
-
-} 
-
-}   
-
- };
-      
-*/
-

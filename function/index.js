@@ -44,6 +44,19 @@ function getInfo() {
       if (username == users[i].username && password == users[i].password) {
         {console.log (username + " is logged in!");
 
+/*//Push username from logged in User in the local storage 
+localStorage.setItem("loggedInUser", users[i].username);
+
+//Push UserID from logged in User in the local storage 
+localStorage.setItem("loggedInUserId", users[i].userId);
+
+//Push LoggedInUserId from logged in User in the local storage  
+localStorage.setItem("loggedInUserJourneyId", users[i].journeyList);*/
+
+//redirect to new html side for logged in users 
+window.location = "journeyOverview.html";
+} 
+}
 //Save username from logged in user in the local storage 
         localStorage.setItem("loggedInUser", users[i].firstname);
 
@@ -55,7 +68,7 @@ function getInfo() {
         console.log (aunthenticatedUserId)
         }
   } 
-}
+
 // Disabling fields after 3 failed attempts.
 if( attempt == 0){    
     document.getElementById("username").disabled = true;
