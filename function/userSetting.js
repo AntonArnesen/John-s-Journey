@@ -4,7 +4,7 @@ var debug = 0;
 // SECTION: Form functionalities 
 // Possible to make this section more efficient? See if one or the other are being clicked 
 // Get modal element
- 
+
 var modal = document.getElementById('simpleModal2');
 // Get open modal button
 var modalBtn = document.getElementById('modalBtn');
@@ -69,7 +69,7 @@ constructor(userBudget, userDpDate, userRtDate, journeyId) {
     this.journeyId = journeyId;
     }
 };
-// Create var called userJourneySettings, parse converts the string into an object, where the string is retrieved from other file - ADD COMENTS
+// Create variable called userJourneySettings, parse converts the string into an object, where the string is retrieved from other file - ADD COMENTS
 var userJourneySettings = JSON.parse(localStorage.getItem("userJourneySettings"));
 
 loggedInUserId = localStorage.getItem("loggedInUserId")
