@@ -43,12 +43,9 @@
       }
   };
 
-  
 // Create var called createdJourney
   var createdJourney = JSON.parse(localStorage.getItem("createdJourney"));
   //var tempUsers = JSON.parse(localStorage.getItem("users"));
-
-
 
 // Hardcoded users in journeySettings in the array
   if(createdJourney === null){
@@ -70,6 +67,9 @@
       console.log(createdJourney);
       createdJourney.push(new journeySettings (journeyName, journeyDp, journeyRegion, journeyDesc, journeyParticipants, journeyId));
       localStorage.setItem('createdJourney',JSON.stringify(createdJourney));
+
+      // direct to after 'create journey'
+      // window.location = "journeyOverview.html"
     }    
     /*
 
@@ -84,9 +84,6 @@
       alert(journeyParticipants + " has been invited!" + users[i].surname);
 
 //Stringify and push new journey into local storage. 
-
-
-// direct to after 'create journey' window.location = "journeyOverview.html"
 
 } 
 

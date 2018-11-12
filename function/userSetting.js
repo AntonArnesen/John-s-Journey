@@ -4,30 +4,23 @@ var debug = 0;
 // SECTION: Form functionalities 
 // Possible to make this section more efficient? See if one or the other are being clicked 
 // Get modal element
-<<<<<<< HEAD
  
-/* 
 var modal = document.getElementById('simpleModal2');
 // Get open modal button
 var modalBtn = document.getElementById('modalBtn');
-=======
 var modal = document.getElementById('simpleModal');
 var modal2 = document.getElementById('simpleModal2');
 // Get open modal button
 var modalBtn = document.getElementById('modalBtn');
 var modalBtn2 = document.getElementById('modalBtn2');
->>>>>>> af1b5c0ea9c38db59420efe469a31321d4c0908f
 // Get close button
 var closeBtn = document.getElementsByClassName('closeBtn')[0];
 var closeBtn2 = document.getElementsByClassName('closeBtn2')[0];
 
 // Listen for open click
 modalBtn.addEventListener('click', openModal);
-<<<<<<< HEAD
-=======
 modalBtn2.addEventListener('click', openModal2);
 
->>>>>>> af1b5c0ea9c38db59420efe469a31321d4c0908f
 // Listen for close click
 closeBtn.addEventListener('click', closeModal);
 closeBtn2.addEventListener('click', closeModal2);
@@ -58,53 +51,71 @@ function outsideClick(e){
     modal.style.display = 'none';
   }
 }
-<<<<<<< HEAD
-*/
-=======
   function outsideClick2(e){
     if(e.target == modal2){
       modal2.style.display = 'none';
     }
 }
->>>>>>> af1b5c0ea9c38db59420efe469a31321d4c0908f
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 // SECTION: Push Manage journey-form inputs into local storage
 //create class Settings
 class userSettings {
 
 // The constructor for our class, which will allow us to create new objects of our class
-constructor(userBudget, userDpDate, userRtDate) {
+constructor(userBudget, userDpDate, userRtDate, journeyId) {
     this.userBudget = userBudget;
     this.userDpDate = userDpDate;
     this.userRtDate = userRtDate;
+    this.journeyId = journeyId;
     }
 };
 // Create var called userJourneySettings, parse converts the string into an object, where the string is retrieved from other file - ADD COMENTS
 var userJourneySettings = JSON.parse(localStorage.getItem("userJourneySettings"));
 
-// Hardcoded users in journeySettings in the array
-if(userJourneySettings === null){
-    userJourneySettings = [];
-}
-// Defining varibales - as we get them from the Journey Settings page
-document.getElementById("userJourneySettings").addEventListener("click", function() {
-    userBudget = document.getElementById("userJourneyBudget").value;
-    userDpDate = document.getElementById("dpDate").value;
-    userRtDate = document.getElementById("rtDate").value;
+loggedInUserId = localStorage.getItem("loggedInUserId")
+//if(debug == 1){
+  console.log(loggedInUserId);
+//}
+
+// Define users in this JS file
+var users = localStorage.getItem("users")
+console.log(users)
+
+// Defining varibales - as we get them from the Journey Settings page and push them into local Storage
+function createUserSettings() { 
+
+//document.getElementById("userJourneySettings").addEventListener("click", function(){
+    let userBudget = document.getElementById("userJourneyBudget").value;
+    let userDpDate = document.getElementById("dpDate").value;
+    let userRtDate = document.getElementById("rtDate").value;
+    let journeyId = localStorage.getItem("loggedInUserJourneyId")
 
 // Push the values taken from the form into the userJourneySettings array 
-userJourneySettings.push(new userSettings (userBudget, userDpDate, userRtDate));
-if(debug == 1){
-    console.log("Success");
-  }
+userJourneySettings.push(new userSettings (userBudget, userDpDate, userRtDate, journeyId));
+
 // Assign our element the name userJourneySettings in local storage and the value and use JSON function to push the values into one string
 localStorage.setItem('userJourneySettings',JSON.stringify(userJourneySettings));
+  }
+
 //Relocate to the main window after the seetings are submitted 
-window.location = "manageJourney.html"
-      });
+if(debug == 1){
+  console.log(userJourneySettings);
+}
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 // SECTION: Check for lowest userBudget in localStorage
 // set userJourneySettingsLocalStorage to the value of local Storage
+
+
+// TRY IT HERE
+
+/*
+// Gregor´s try to loop through the Users to assign journeyID of looged in
+  for (let i = 0; i < users.length; i++) {
+    if (loggedInUserId == users[i].userId) {
+        loopedJourneyId == users[i].journeyList}
+    }
+console.log(loopedJourneyId)
+*/
 var userJourneySettingsLocalStorage = JSON.parse(localStorage.getItem("userJourneySettings"));
 var lowest;
 for (let i = 0; i < userJourneySettingsLocalStorage.length; i++) {
@@ -156,75 +167,6 @@ for (let i = 0; i < userJourneySettingsLocalStorage.length; i++) {
   }
   localStorage.setItem('lowestRtDate',lowestRtDate.userRtDate);
 }
+
 if(debug == 1){
-console.log(lowestRtDate.userRtDate);}
-
-/*-------------------------------------------------------------------------------------------------------------------------------*/
-// TO DO: MAKE A FUNCTION OUT OF IT, OTHERWISE IT WILL ALWAYS ADD A NEW ITEM TO LOCAL STORAGE WHEN YOU REFRESH 
-// SECTION: Create Flight Setting Class
-// Combine all values needed to select flights from local storage
-class flightSettings {
-
-  // The constructor for our class, which will allow us to create new objects of our class
-  constructor(journeyId, journeyName, highestDpDate, lowestRtDate, lowestUserBudget, journeyDp,journeyRegion) {
-      this.journeyId = journeyId;
-      this.journeyName = journeyName;
-      this.highestDpDate = highestDpDate;
-      this.lowestRtDate = lowestRtDate;
-      this.lowestUserBudget = lowestUserBudget;
-      this.journeyDp = journeyDp;
-      this.journeyRegion = journeyRegion;
-      }
-  };
-  // Create var called userFlightSettings
-  var journeyFlightSettings = JSON.parse(localStorage.getItem("journeyFlightSettings"));
-  
-  // Hardcoded users in journeyFlightSettings in the array
-  if(journeyFlightSettings === null){
-     journeyFlightSettings = [];
-     journeyFlightSettings.push(new flightSettings(5555, "John´s Journey", "2018-10-30", "2018-11-10", 15000, "Copenhagen", "Europe"));
-  }
-  
-  // Defining varibales - as we get them from local storage
-  // You need to define a variable first to unpack the JSON String and then you can target single values 
-  var flightJourneySettingsLocalStorage = JSON.parse(localStorage.getItem("createdJourney"));
-  // How should the system know for which journey we are checking??? [1] -> müsste es selber herausfinden
-     journeyId = flightJourneySettingsLocalStorage[1].journeyId;
-
-     journeyName = flightJourneySettingsLocalStorage[1].journeyName;
-     highestDpDate = localStorage.getItem("highestDpDate");
-     lowestRtDate = localStorage.getItem("lowestRtDate");
-     lowestUserBudget = localStorage.getItem("lowestUserBudget");
-     journeyDp = flightJourneySettingsLocalStorage[1].journeyDp;
-     journeyRegion = flightJourneySettingsLocalStorage[1].journeyRegion;
- // TO DO: We need one more variable for number of participants
-
-  // Push the values taken from the form into the journeyFlightSettings array 
-  journeyFlightSettings.push(new flightSettings (journeyId, journeyName, highestDpDate, lowestRtDate, lowestUserBudget, journeyDp,journeyRegion));
-   if(debug == 1){
-         console.log(journeyFlightSettings);
-  }
-
-  // Push journeyFlightSettings into local storage
-localStorage.setItem('journeyFlightSettings',JSON.stringify(journeyFlightSettings));
-/*-------------------------------------------------------------------------------------------------------------------------------*/
-
-// Recall Flight Settings from local storage 
-// Redirect to page with all your information presented
-// Manipulate URL to show the right flight options
-
-// Try to set URL specific for every 
-
-var finalFlightSettings = JSON.parse(localStorage.getItem("journeyFlightSettings"));
-var urlDeparture
-var urlDestination
-var button = document.getElementById("button")
-
-button.onclick = function () {
-  if (finalFlightSettings[1].journeyDp == "Helsinki Airport - HEL") {
-    window.location.href = "https://www.google.dk/flights/?lite=0#flt=HEL.r/m/02j9z."+finalFlightSettings[1].highestDpDate+"r/m/02j9z.HEL."+finalFlightSettings[1].lowestRtDate+";c:EUR;e:1;px:2;sd:1;t:e"
-  }
-  //else 
-  }
-
-//console.log(setURL());
+  console.log(lowestRtDate.userRtDate)}

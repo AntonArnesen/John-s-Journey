@@ -1,5 +1,6 @@
+// Debug variable - if 1 debug console is running 
+var debug = 1;
 // ADD INDENTATION!!!!!
-
 // We create a user class, so we have an easy way to create users and further implement features at a later stage
 class User {
 
@@ -20,40 +21,37 @@ var users = JSON.parse(localStorage.getItem("users"));
 // Hardcoded users in the users array
 if(users === null){
   users = [];
-  users.push(new User("CoolJoe", "1234", "Joe", "Reisinger", "joe@email.de", "", "1"));
-  users.push(new User("CoolAnna", "1234", "Anna", "Reisinger", "joe@email.de", "", "2"));
+  users.push(new User("CoolJoe", "1234", "Joe", "Reisinger", "joe@email.de", "Peter" , "ID",));
+  users.push(new User("CoolAnna", "1234", "Anna", "Reisinger", "joe@email.de", "555", "ID",));
 }
-
-// Define the buttons and span
-var submit = document.getElementById('submit');
-var forgot = document.getElementById('forgotPassword');
-var logout = document.getElementById("logout");
-var register = document.getElementById ('registerUser');
-var resultSpan = document.getElementById('loginResult');
 
 // Variabel to define the amount of wrong attempts you have
 var attempt = 3;
+
+var aunthenticatedUserId = null; 
 
 // Function to go through the User Data to match Username/Password
 function getInfo() {
   var username = document.getElementById("username").value
   var password = document.getElementById("password").value
-
+  
 // Loop that goes through the User Data to idetify right or wrong Username/Password
   for (let i = 0; i < users.length; i++) {
       if (username == users[i].username && password == users[i].password) {
-        {console.log (username + " is logged in!");
+      if(debug == 1){
+      console.log (username + " is logged in!");}
 
 //Push username from logged in User in the local storage 
-        localStorage.setItem("loggedInUser", users[i].firstname);
+localStorage.setItem("loggedInUser", users[i].username);
+
+//Push UserID from logged in User in the local storage 
+localStorage.setItem("loggedInUserId", users[i].userId);
+
+//Push LoggedInUserId from logged in User in the local storage  
+localStorage.setItem("loggedInUserJourneyId", users[i].journeyList);
 
 //redirect to new html side for logged in users 
-        window.location = "journeyOverview.html";
-
-//Set authenticatedUserId to userId to enable to change aunthenticatedUserId = null into new value
-        aunthenticatedUserId = users[i].userId;
-        console.log (aunthenticatedUserId)
-        }
+window.location = "journeyOverview.html";
   } 
 }
 // Disabling fields after 3 attempts.
@@ -80,8 +78,9 @@ var validFirstname = false;
 var validSurname = false;
 
 //Check if username is blank
-  function checkUsername(username) {
-  console.log(username);
+  function checkUsername(username) {  
+  if(debug == 1){  
+  console.log(username);}
     if(username !== "") 
     {
       validUsername = true; //Authenticating input 
@@ -144,14 +143,6 @@ var validSurname = false;
     return (false)
   }
 
-//If all input has been authenticated, welcome and  redirect user to loginPage
-  function userCreated () {
-    if (validMail == true && validUsername == true && validPassword == true && validFirstname == true && validSurname == true){
-      alert ("Welcome " + username + ". You'll now be redirected to the login Page.")
-    window.location = "index.html";
-    }
-  }
-
   var regUser = document.getElementById("registerUser");
 
   if(regUser !== null){
@@ -165,6 +156,7 @@ regUser.addEventListener("click", function() {
     email = document.getElementById("regEmail").value;
     journeyList = "";
     userId = '_' + Math.random().toString(36).substr(2, 9);
+
 /*
 // Call validateEmail funciton   
     let validateUsername = checkUsername(username);
@@ -180,11 +172,20 @@ regUser.addEventListener("click", function() {
 //If all input has been authenticated, welcome and  redirect user to loginPage
     let redirectUser = userCreated (); */ 
 
-    users.push(new User(username, password, firstname, surname, email, journeyList, userId));
-    console.log(users);
+    users.push(new User(username, password, firstname, surname, email, journeyList, userId, ));
+    if(debug == 1){
+    console.log(users);}
     localStorage.setItem('users',JSON.stringify(users));
       });
     }
+
+// Define the buttons and span
+var submit = document.getElementById('submit');
+var forgot = document.getElementById('forgotPassword');
+var logout = document.getElementById("logout");
+var register = document.getElementById ('registerUser');
+var resultSpan = document.getElementById('loginResult');
+
       
 // Redirecting when clicking on buttons 
 function goToRegister () {
