@@ -20,8 +20,9 @@ var users = JSON.parse(localStorage.getItem("users"));
 // Hardcoded users in the users array
 if(users === null){
     users = [];
-    users.push(new User("CoolJoe", "1234", "Joe", "Reisinger", "joe@email.de", "xxxx"));
+    users.push(new User("CoolJoe", "1234", "Joe", "Reisinger", "joe@email.de", "1234"));
     users.push(new User("CoolAnna", "1234", "Anna", "Reisinger", "anna@email.de", "5678"));
+   // localStorage.setItem('users',JSON.stringify(users));
 }
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 // SECTION: Login

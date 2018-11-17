@@ -24,14 +24,15 @@ if(regUser !== null){
         firstname = document.getElementById("regFirstname").value;
         surname = document.getElementById("regSurname").value;
         email = document.getElementById("regEmail").value;
-        journeyList = "";
         userId = '_' + Math.random().toString(36).substr(2, 9);
+        journeyList = "";
 
             //If all input has been authenticated, welcome and  redirect user to loginPage
-            users.push(new User(username, password, firstname, surname, email, journeyList, userId, ));
+            users.push(new User(username, password, firstname, surname, email, userId, journeyList));
             if(debug == 1){
             console.log(users);}
             localStorage.setItem('users',JSON.stringify(users));
-    });2
-//    window.location = "index.html"
+            window.location = "index.html"
+    });
+ 
 }

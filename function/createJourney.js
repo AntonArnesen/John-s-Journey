@@ -29,7 +29,7 @@ if(createdJourney === null){
 }   
   
 
-// Defining varibales - as we get them from the Journey Settings page
+// Defining varibales - as we get them from the Journey Settings inputs
 function createJourney() {
     let journeyName = document.getElementById("journeyName").value;
     let journeyDp = document.getElementById("journeyDp").value;
@@ -38,6 +38,7 @@ function createJourney() {
     let journeyParticipants = document.getElementById("journeyParticipants").value;
     let journeyId = '_' + Math.random().toString(36).substr(2, 9);
 
+    // First of all only 1 user can be invited - TO DO
     document.getElementById("journeyParticipants").multiple = true;
     localStorage.setItem('journeyParticipants',(journeyParticipants))
     localStorage.setItem('journeyId',(journeyId))
@@ -50,14 +51,13 @@ function createJourney() {
     var journeyPart = localStorage.getItem("journeyParticipants");
     var journeyID = localStorage.getItem("journeyId");
     var users = JSON.parse(localStorage.getItem("users"));
-    var journeyID = localStorage.getItem("journeyId");
-    var LogUserId = localStorage.getItem("loggedInUserId");
+    var loggedInUserId = localStorage.getItem("loggedInUserId");
 
 // Problem is that when you invite anna with Joe the system over writes the pushed journeyID of the the first loop and both
 // are empty -> of you log in with Anna it works
     for (i = 0; i < users.length; i++) {
         //Push journey Id into journeylist of journey creator
-        if (LogUserId == users[i].userId) {
+        if (loggedInUserId == users[i].userId) {
             users[i].journeyList.push(journeyID);
         }
     }
