@@ -17,6 +17,8 @@ class journeySettings {
 
 // Create var called createdJourney
 var createdJourney = JSON.parse(localStorage.getItem("createdJourney"));
+// Get the information about the users in the Index.js
+  var users = JSON.parse(localStorage.getItem("users"));
 
  
 // Hardcoded users in journeySettings in the array

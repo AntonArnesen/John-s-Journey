@@ -52,7 +52,6 @@ function createUserSettings() {
     }
 console.log(loopedJourneyId)
 
-
 var userJourneySettingsLocalStorage = JSON.parse(localStorage.getItem("userJourneySettings"));
 var lowest;
 for (let i = 0; i < userJourneySettingsLocalStorage.length; i++) {
