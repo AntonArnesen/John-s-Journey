@@ -6,9 +6,8 @@
 
 class flightSettings {
 
-  // The constructor for our class, which will allow us to create new objects of our class
   constructor(journeyName, highestDpDate, lowestRtDate, lowestUserBudget, journeyDp,journeyRegion) {
-   //   this.journeyId = journeyId;
+   // this.journeyId = journeyId;
       this.journeyName = journeyName;
       this.highestDpDate = highestDpDate;
       this.lowestRtDate = lowestRtDate;

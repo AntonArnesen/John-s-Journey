@@ -10,20 +10,28 @@ document.getElementById("regEmail").addEventListener("onblur", function() {
         return false;
     }
 });
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+// SECTION: Log in Function
 
-/*
-document.getElementById("regEmail").addEventListener("onblur", function() {
-  var email = document.getElementById("regEmail");
-  if (email.validity.typeMismatch) {
-    email.setCustomValidity("Please enter a valid e-mail.");
-  } else {
-    email.setCustomValidity("");
-  }
-});
+var regUser = document.getElementById("registerUser");
 
-document.getElementById("registerUser").addEventListener("onkeyup", function() {
+if(regUser !== null){
+    // On "Click" validate input and push new user into array users
+    regUser.addEventListener("click", function() {
+  
+        username = document.getElementById("regUsername").value;
+        password = document.getElementById("regPassword").value;
+        firstname = document.getElementById("regFirstname").value;
+        surname = document.getElementById("regSurname").value;
+        email = document.getElementById("regEmail").value;
+        journeyList = "";
+        userId = '_' + Math.random().toString(36).substr(2, 9);
 
-var email = document.getElementById ("regEmail".value);
-    var re = /\S+@\S+/;
-    return re.test(email);
-});*/
+            //If all input has been authenticated, welcome and  redirect user to loginPage
+            users.push(new User(username, password, firstname, surname, email, journeyList, userId, ));
+            if(debug == 1){
+            console.log(users);}
+            localStorage.setItem('users',JSON.stringify(users));
+    });2
+//    window.location = "index.html"
+}
