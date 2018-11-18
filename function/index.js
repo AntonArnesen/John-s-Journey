@@ -78,7 +78,6 @@ function getInfo() {
                         resultSpan.innerText = "You've entered a wrong username or password. You have left "+attempt+" attempt(s).";
                     } 
 }   
-
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 // SECTION: Defining values
 // Define the buttons and span

@@ -17,10 +17,8 @@ class journeySettings {
 
 // Create var called createdJourney
 var createdJourney = JSON.parse(localStorage.getItem("createdJourney"));
-// Get the information about the users in the Index.js
-  var users = JSON.parse(localStorage.getItem("users"));
+var users = JSON.parse(localStorage.getItem("users"));
 
- 
 // Hardcoded users in journeySettings in the array
 if(createdJourney === null){
    createdJourney = [];
@@ -28,7 +26,6 @@ if(createdJourney === null){
    createdJourney.push(new journeySettings ("journeyName", "journeyDp", "journeyRegion", "journeyDesc", "journeyParticipants", "journeyId"))
 }   
   
-
 // Defining varibales - as we get them from the Journey Settings inputs
 function createJourney() {
     let journeyName = document.getElementById("journeyName").value;
@@ -50,27 +47,33 @@ function createJourney() {
     //Define values for function 
     var journeyPart = localStorage.getItem("journeyParticipants");
     var journeyID = localStorage.getItem("journeyId");
-    var users = JSON.parse(localStorage.getItem("users"));
     var loggedInUserId = localStorage.getItem("loggedInUserId");
+    var users = JSON.parse(localStorage.getItem("users"));
 
 // Problem is that when you invite anna with Joe the system over writes the pushed journeyID of the the first loop and both
 // are empty -> of you log in with Anna it works
     for (i = 0; i < users.length; i++) {
         //Push journey Id into journeylist of journey creator
         if (loggedInUserId == users[i].userId) {
-            users[i].journeyList.push(journeyID);
-        }
-    }
-
-    for (i = 0; i < users.length; i++) {
-        //Push journey Id into journeylist of participating users
-        if (journeyPart == users[i].email) {
         users[i].journeyList.push(journeyID);
-        localStorage.setItem('users',JSON.stringify(users)); 
+        localStorage.setItem('loggedInUserJourneyId',(users[i].journeyList));
+        break;
         }
-        else { (journeyPart !== users[i].email)
-            return alert(journeyPart+ " has been invited!");
-        } 
-    
     }
+            for (i = 0; i < users.length; i++) {
+                //Push journey Id into journeylist of participating users
+                console.log(users[i].email)
+                    if (journeyPart == users[i].email) {
+                        console.log(users[i].email)
+                        users[i].journeyList.push(journeyID);
+                        break; 
+                        }
+                            // Need a default option for not registered users, but else doesn´t work 
+                            /*if (journeyPart !== users[i].email){
+                            alert(journeyPart+ " has been invited!");
+                            break; 
+                            } */
+            
+            }
+            localStorage.setItem('users',JSON.stringify(users));
 }
