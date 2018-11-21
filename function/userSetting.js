@@ -14,99 +14,89 @@ class userSettings {
 
 // Create variable called userJourneySettings, parse converts the string into an object, where the string is retrieved from other file - ADD COMENTS
 var userJourneySettings = JSON.parse(localStorage.getItem("userJourneySettings"));
-var loggedInUserId = localStorage.getItem("loggedInUserId")
-var users = localStorage.getItem("users")
+var users = JSON.parse(localStorage.getItem("users"));
 
 if(userJourneySettings === null){
   userJourneySettings = [];
   // Default Option 
-  userJourneySettings.push(new userSettings ("userBudget", "userDpDate", "userRtDate", "journeyId"))
+  userJourneySettings.push(new userSettings ("userBudget", "2018-01-01", "2019-12-31", "journeyId"))
 }   
-
 // Defining varibales - as we get them from the Journey Settings page and push them into local Storage
-function createUserSettings() { 
 
+function createUserSettings() { 
     let userBudget = document.getElementById("userJourneyBudget").value;
     let userDpDate = document.getElementById("dpDate").value;
     let userRtDate = document.getElementById("rtDate").value;
+    //JourneyId is now the the journey Id of the logged in user
     let journeyId = localStorage.getItem("loggedInUserJourneyId")
-
+    
     // Push the values taken from the form into the userJourneySettings array 
     userJourneySettings.push(new userSettings (userBudget, userDpDate, userRtDate, journeyId));
-
-    // Assign our element the name userJourneySettings in local storage and the value and use JSON function to push the values into one string
-    localStorage.setItem('userJourneySettings',JSON.stringify(userJourneySettings));
-
-    //Relocate to the main window after the seetings are submitted 
-    if(debug == 1){
-        console.log(userJourneySettings);
-    }
+    
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 // SECTION: Check for lowest userBudget in localStorage
 // Loop throug userJourneySettings and get the lowest Budget
-
+var lowest = null;
+var highestDpDate = null;
+var lowestRtDate = null;
 // Try to assign Journey ID to Journey Budget
-  for (let i = 0; i < users.length; i++) {
-    if (loggedInUserId == users[i].userId) {
-        var loopedJourneyId = users[i].journeyList}
-    }
-console.log(loopedJourneyId)
-
-var userJourneySettingsLocalStorage = JSON.parse(localStorage.getItem("userJourneySettings"));
-var lowest;
-for (let i = 0; i < userJourneySettingsLocalStorage.length; i++) {
-  if (userJourneySettingsLocalStorage[i].userBudget != 0) {
-    if(lowest == null){
-      lowest = userJourneySettingsLocalStorage[i];
-      continue;
-    }
-    if(userJourneySettingsLocalStorage[i].userBudget < lowest.userBudget){
-      lowest = userJourneySettingsLocalStorage[i];
+for (let i = 0; i < userJourneySettings.length; i++) {
+  
+    // Is it really checking for all Budgets in local storage with the journeyId
+    if (journeyId == userJourneySettings[i].journeyId) {   
+       
+      
+      if (userJourneySettings[i].userBudget != 0) {
+        if(lowest == null){
+        lowest = userJourneySettings[i].userBudget;
+        
+        
+        } else if(userJourneySettings[i].userBudget < lowest){
+          lowest = userJourneySettings[i].userBudget;
+          console.log(userJourneySettings)
+          debugger
+          
+        }
+      }
     }
   }
-  localStorage.setItem('lowestUserBudget',lowest.userBudget);
-}
-if(debug == 1){
-console.log(lowest.userBudget);}
-
+          
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 // SECTION: Get highest shared Departure Date
-// Function loops through userJourneySettings out of local storage to find shared date 
-var highestDpDate;
-for (let i = 0; i < userJourneySettingsLocalStorage.length; i++) {
-  if (userJourneySettingsLocalStorage[i].userDpDate != 0) {
-    if(highestDpDate == null){
-      highestDpDate = userJourneySettingsLocalStorage[i];
-        continue;
-    }
-    if(userJourneySettingsLocalStorage[i].userDpDate > highestDpDate.userDpDate){
-      highestDpDate = userJourneySettingsLocalStorage[i];
-    }
-  }
-    localStorage.setItem('highestDpDate',highestDpDate.userDpDate);
-}
-
-if(debug == 1){
-    console.log(highestDpDate.userDpDate);
-}
+// Function loops through userJourneySettings out of local storage to find shared date - STIIL THE SAME FUNCTION
+                                   
+      for (let i = 0; i < userJourneySettings.length; i++) {
+                                      if (userJourneySettings[i].userDpDate != 0) {
+                                        
+                                          if(highestDpDate == null){
+                                          highestDpDate = userJourneySettings[i].userDpDate;
+                                          
+                                          }
+                                                 else if(userJourneySettings[i].userDpDate > highestDpDate){
+                                                  highestDpDate = userJourneySettings[i].userDpDate;
+                                                  }
+                                                
+                                      }
+                                    }
+                                  
+                                  
 /*-------------------------------------------------------------------------------------------------------------------------------*/
-// SECTION: Get lowest shared Return Date
+// SECTION: Get lowest shared Return Date - STIIL THE SAME FUNCTION
 // Function loops through userJourneySettings out of local storage to find lowest shared date 
-var lowestRtDate;
-for (let i = 0; i < userJourneySettingsLocalStorage.length; i++) {
-  if (userJourneySettingsLocalStorage[i].userRtDate != 0) {
-    if(lowestRtDate == null){
-      lowestRtDate = userJourneySettingsLocalStorage[i];
-        continue;
-    }
-    if(userJourneySettingsLocalStorage[i].userRtDate < lowestRtDate.userRtDate){
-      lowestRtDate = userJourneySettingsLocalStorage[i];
-    }
-  }
-  localStorage.setItem('lowestRtDate',lowestRtDate.userRtDate);
+                                                      
+                                                          for (let i = 0; i < userJourneySettings.length; i++) {
+                                                              if (userJourneySettings[i].userRtDate != 0) {
+                                                                  if(lowestRtDate == null){
+                                                                    lowestRtDate = userJourneySettings[i].userRtDate;
+                                                                  
+                                                                  }
+                                                                              else if(userJourneySettings[i].userRtDate < lowestRtDate){
+                                                                                  lowestRtDate = userJourneySettings[i].userRtDate;
+                                                                              } 
+                                                              }
+                                                          }
+
+createFlightSettings(lowest, lowestRtDate, highestDpDate)
 }
 
-if(debug == 1){
-  console.log(lowestRtDate.userRtDate)}
-// This is the end of function createUserSettings() 
-};
+

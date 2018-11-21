@@ -6,16 +6,18 @@
 
 class flightSettings {
 
-  constructor(journeyName, highestDpDate, lowestRtDate, lowestUserBudget, journeyDp,journeyRegion) {
-   // this.journeyId = journeyId;
-      this.journeyName = journeyName;
-      this.highestDpDate = highestDpDate;
-      this.lowestRtDate = lowestRtDate;
-      this.lowestUserBudget = lowestUserBudget;
-      this.journeyDp = journeyDp;
-      this.journeyRegion = journeyRegion;
-      }
-  };
+  constructor(lowestUserBudget,lowestRtDate, highestDpDate, journeyId, journeyName, journeyDp,journeyRegion) {
+    this.lowestUserBudget = lowestUserBudget;
+    this.lowestRtDate = lowestRtDate;
+    this.highestDpDate = highestDpDate;
+    this.journeyId = journeyId;
+    this.journeyName = journeyName;
+    this.journeyDp = journeyDp;
+    this.journeyRegion = journeyRegion;
+    // this.journeyParticipantcounts = journeyParticipantcounts;  
+    // add participants by name to this class
+  }
+};
   // Create var called userFlightSettings
 
   var journeyFlightSettings = JSON.parse(localStorage.getItem("journeyFlightSettings"));
@@ -28,27 +30,34 @@ class flightSettings {
   
   // Defining varibales - as we get them from local storage
   // You need to define a variable first to unpack the JSON String and then you can target single values 
-  //var flightJourneySettingsLocalStorage = JSON.parse(localStorage.getItem("createdJourney"));
   // How should the system know for which journey we are checking??? [1] -> müsste es selber herausfinden
-  //   journeyId = flightJourneySettingsLocalStorage[1].journeyId;
 
-     journeyName = flightJourneySettingsLocalStorage[1].journeyName;
-     highestDpDate = localStorage.getItem("highestDpDate");
-     lowestRtDate = localStorage.getItem("lowestRtDate");
-     lowestUserBudget = localStorage.getItem("lowestUserBudget");
-     journeyDp = flightJourneySettingsLocalStorage[1].journeyDp;
-     journeyRegion = flightJourneySettingsLocalStorage[1].journeyRegion;
- // TO DO: We need one more variable for number of participants
+function createFlightSettings(lowestUserBudget, lowestRtDate, highestDpDate) {
+    console.log(`Buget is:${lowestUserBudget} return: ${lowestRtDate} departure: ${highestDpDate}`)
+        journeyId = localStorage.getItem("loggedInUserJourneyId");
+        var journey = getJourney(journeyId);
+        journeyName = journey.journeyName;
+        journeyDp = journey.journeyDp;
+        journeyRegion = journey.journeyRegion;
+        // TO DO: We need one more variable for number of participants
 
-  // Push the values taken from the form into the journeyFlightSettings array 
-  journeyFlightSettings.push(new flightSettings (journeyName, highestDpDate, lowestRtDate, lowestUserBudget, journeyDp,journeyRegion));
-   if(debug == 1){
-         console.log(journeyFlightSettings);
-  }
+      // Push the values taken from the form into the journeyFlightSettings array 
+          journeyFlightSettings.push(new flightSettings (lowestUserBudget,lowestRtDate, highestDpDate, journeyId, journeyName, journeyDp,journeyRegion));
+            if(debug == 1){
+              console.log(journeyFlightSettings);
+          }
 
   // Push journeyFlightSettings into local storage
 localStorage.setItem('journeyFlightSettings',JSON.stringify(journeyFlightSettings));
 
+}
+function getJourney(journeyId) {
+  for (let i = 0; i < createdJourney.length; i++) { // Loop through journey
+    if (journeyId == createdJourney[i].journeyId) { // if logged in user Id is = journey Id than return the journey 
+      return createdJourney[i];
+    }
+  }
+}
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 // Recall Flight Settings from local storage 
 // Redirect to page with all your information presented
@@ -56,6 +65,7 @@ localStorage.setItem('journeyFlightSettings',JSON.stringify(journeyFlightSetting
 
 // Try to set URL specific for every 
 
+/*
 var finalFlightSettings = JSON.parse(localStorage.getItem("journeyFlightSettings"));
 var button = document.getElementById("button")
 
@@ -67,5 +77,5 @@ button.onclick = function () {
 
 
 //console.log(setURL());
-
+*/
 /*-------------------------------------------------------------------------------------------------------------------------------*/
